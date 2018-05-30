@@ -121,7 +121,7 @@ Note:
 continue to next slide
 
 
----?image=/assets/images/slides/Slide6.JPG
+---
 @title[Lab 2 Build and Test Driver 02]
 <p align="right"><span class="gold" >Lab 2: Build and Test Driver</span></p>
 <span style="font-size:0.8em" >Copy  MyWizardDriver.efi  to hda-contents</span>
@@ -131,6 +131,9 @@ continue to next slide
  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MyWizardDriver.efi .
 ```
 </pre>
+
+
+---?image=/assets/images/slides/Slide6.JPG
 <div class="left1">
 <span style="font-size:0.7em" >Test by Invoking Qemu</span>
 <pre lang="shell">
