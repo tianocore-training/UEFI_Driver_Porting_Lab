@@ -110,7 +110,7 @@ Note:
   bash$ build
 ```
 
-<span style="font-size:0.8em" ><b>Build error</b> from UEFI Driver Wizard:	</span><br>
+<span style="font-size:0.8em" ><b>Build error</b> Known issue from UEFI Driver Wizard:	</span><br>
 <span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp;`ComponentName.c`  Line 148 col 74  needs “`//`” in front of “`## TO_START`”	</span><br>
 ```shell
    bash$ build
@@ -225,11 +225,11 @@ Same as slide
 @title[Lab 3: Component Name ]
 <p align="right"><span class="gold" >Lab 3: Component Name</span></p>
 <ul>
-   <li><span style="font-size:0.8em" ><b>Open</b> `~/src/edk2/MyWizardDriver/ComponentName.c`</span></li>
-   <li><span style="font-size:0.8em" ><b>Change</b>the string returned by the driver from MyWizardDriver to:  <span style="background-color: #101010">`UEFI Sample Driver`</span></span></li>
+   <li><span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > `~/src/edk2/MyWizardDriver/ComponentName.c`</span></li>
+   <li><span style="font-size:0.8em" ><b>Change</b>&nbsp;&nbsp; the string returned by the driver from MyWizardDriver to:  <span style="background-color: #101010">`UEFI Sample Driver`</span></span></li>
 <pre lang="c">
 ```
- /// Table of driver names
+  /// Table of driver names
  ///
  GLOBAL_REMOVE_IF_UNREFERENCED 
  EFI_UNICODE_STRING_TABLE mMyWizardDriverDriverNameTable[] = {
@@ -238,7 +238,7 @@ Same as slide
  };
 ```
 </pre>
-   <li><span style="font-size:0.8em" >Save and close the file `~/src/edk2/MyWizardDriver/ComponentName.c`  </span></li>
+   <li><span style="font-size:0.8em" >Save and close the file: </span><span style="font-size:0.7em" >`~/src/edk2/MyWizardDriver/ComponentName.c`  </span></li>
 </ul>
 
 
@@ -247,6 +247,7 @@ Same as slide
 ---
 @title[Lab 3 Build and Test Driver]
 <p align="right"><span class="gold" >Lab 3: Build and Test Driver</span></p>
+<br>
 <span style="font-size:0.8em" >Build MyWizardDriver – Cd to ~/src/edk2 dir </span>
 ```shell
   bash$ build
@@ -267,13 +268,15 @@ Same as slide
 ---?image=/assets/images/slides/Slide11.JPG
 @title[Lab 3 Build and Test Driver]
 <p align="right"><span class="gold" >Lab 3: Build and Test Driver</span></p>
-<br>
-<div class="left">
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`drivers`</span></span><br>
-<span style="font-size:0.8em" >Observe the change in the string that the driver returned </span>
+<br>
+<div class="left">
+<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
+<span style="font-size:0.7em" >Observe the change in the string that the driver returned </span><br>
+<br>
+<span style="font-size:0.8em" >Exit QEMU</span>
 </div>
 <div class="right">
 <span style="font-size:0.8em" ></span>
