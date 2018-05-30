@@ -101,6 +101,55 @@ Note:
 
 
 
+---
+@title[Lab 2 Build and Test Driver]
+<p align="right"><span class="gold" >Lab 2: Build and Test Driver</span></p>
+<span style="font-size:0.8em" >Build MyWizardDriver – Cd to ~/src/edk2 dir </span>
+```shell
+  bash$ . edksetup.sh
+  bash$ build
+```
+
+<span style="font-size:0.8em" ><b>Build error</b> from UEFI Driver Wizard:	</span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp`ComponentName.c`  Line 148 col 74  needs “`//`” in front of “`## TO_START`”	</span><br>
+```shell
+   bash$ build
+```
+<span style="font-size:0.8em" ><b>Build ERRORS:</b> Copy the solution files from `~/FW/LabSampleCode/LabSolutions/LessonC.1` to `~/src/edk2/MyWizardDriver`	</span><br>
+
+Note: 
+continue to next slide
+
+
+---?image=/assets/images/slides/Slide6.JPG
+@title[Lab 2 Build and Test Driver 02]
+<p align="right"><span class="gold" >Lab 2: Build and Test Driver</span></p>
+<div class="left1">
+<span style="font-size:0.8em" >Copy  MyWizardDriver.efi  to hda-contents</span>
+```shell
+  bash$ cd ~/run-ovmf/hda-contents
+  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MyWizardDriver.efi .
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```shell
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+<span style="font-size:0.8em" >Load the UEFI Driver from the shell</span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp At the Shell 2.0 prompt, type `fs0:`</span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp Type: `load MyWizardDriver.efi`</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+
+
+
+
 
 
 
