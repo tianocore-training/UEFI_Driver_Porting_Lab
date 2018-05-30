@@ -46,7 +46,7 @@ Note:
 <!---  Add bullets using https://fontawesome.com/cheatsheet certificate
 -->
 <ul style="list-style-type:none">
- <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;Compile a UEFI driver template from UEFI Driver Wizard</span> </li><br>
+ <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;Compile a UEFI driver template created from<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UEFI Driver Wizard</span> </li><br>
  <li>@fa[certificate gp-bullet-cyan]<span style="font-size:0.9em">&nbsp;&nbsp;Test driver in QEMU using UEFI Shell 2.0</span></li><br>
  <li>@fa[certificate gp-bullet-yellow]<span style="font-size:0.9em">&nbsp;&nbsp;Port code into the template driver</span> </li>
 </ul>
@@ -197,7 +197,7 @@ Same as slide
 <span style="font-size:0.7em" >See example screenshot - below</span><br>
 <span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span> again</span><br><br>
 <span style="font-size:0.7em" >Notice results of `unload` command</span><br><br>
-<span style="font-size:0.7em" >Exit QEMU </span><br>
+<span style="font-size:0.7em" ><font color="yellow">Exit QEMU</font></span><br>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" ></span>
@@ -226,7 +226,7 @@ Same as slide
 <p align="right"><span class="gold" >Lab 3: Component Name</span></p>
 <ul>
    <li><span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > `~/src/edk2/MyWizardDriver/ComponentName.c`</span></li>
-   <li><span style="font-size:0.8em" ><b>Change</b>&nbsp;&nbsp; the string returned by the driver from MyWizardDriver to:  <span style="background-color: #101010">`UEFI Sample Driver`</span></span></li>
+   <li><span style="font-size:0.8em" ><b>Change</b>&nbsp;&nbsp; the string returned by the driver from `MyWizardDriver` to: &nbsp;&nbsp;&nbsp; <span style="background-color: #101010"><font color="#a8ff60">`UEFI Sample Driver`</font></span></span></li>
 <pre lang="c">
 ```
   /// Table of driver names
@@ -276,7 +276,7 @@ Same as slide
 <span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
 <span style="font-size:0.7em" >Observe the change in the string that the driver returned </span><br>
 <br>
-<span style="font-size:0.8em" >Exit QEMU</span>
+<span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span>
 </div>
 <div class="right">
 <span style="font-size:0.8em" ></span>
@@ -296,12 +296,10 @@ Same as slide
 <BR>
 ### <p align="center"><span class="gold"   >Summary </span></p><br>
 <ul style="list-style-type:none">
- <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;Generate and compile a driver template </span> </li><br><br>
- <li>@fa[certificate gp-bullet-cyan]<span style="font-size:0.9em">&nbsp;&nbsp;Test driver in QEMU using UEFI Shell 2.0</span></li><br><br>
+ <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;Compile a UEFI driver template created from<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UEFI Driver Wizard</span> </li><br>
+ <li>@fa[certificate gp-bullet-cyan]<span style="font-size:0.9em">&nbsp;&nbsp;Test driver in QEMU using UEFI Shell 2.0</span></li><br>
  <li>@fa[certificate gp-bullet-yellow]<span style="font-size:0.9em">&nbsp;&nbsp;Port code into the template driver</span> </li>
 </ul>
-
-
  
 
 ---?image=assets/images/gitpitch-audience.jpg
