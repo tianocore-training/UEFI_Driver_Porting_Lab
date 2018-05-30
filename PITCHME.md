@@ -135,13 +135,14 @@ continue to next slide
 <span style="font-size:0.7em" >Test by Invoking Qemu</span>
 <pre lang="shell">
 ```
-    bash$ cd ~/run-ovmf
- bash$ . RunQemu.sh
+
+  bash$ cd ~/run-ovmf
+  bash$ . RunQemu.sh
 ```
 </pre>
 <span style="font-size:0.7em" >Load the UEFI Driver from the shell</span><br>
-<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type `fs0:`</span><br>
-<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; Type: `load MyWizardDriver.efi`</span>
+<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
+<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span>
 
 </div>
 <div class="right1">
