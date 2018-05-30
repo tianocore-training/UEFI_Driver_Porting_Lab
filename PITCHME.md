@@ -133,9 +133,8 @@ continue to next slide
 ```
 <div class="left1">
 <span style="font-size:0.7em" >Test by Invoking Qemu</span>
-<pre lang="shell">
+<pre>
 ```
-
   bash$ cd ~/run-ovmf
   bash$ . RunQemu.sh
 ```
@@ -153,6 +152,141 @@ Note:
 
 Same as slide
 
+
+
+---?image=/assets/images/slides/Slide7.JPG
+@title[Lab 2 Test Driver Drivers]
+<p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
+<span style="font-size:0.8em" >At the shell prompt Type: <span style="background-color: #101010">`drivers`</span></span>
+
+<div class="left1">
+<span style="font-size:0.7em" >Verify the UEFI Shell loaded the new driver. 
+The `drivers` command will display the driver information and a driver handle number ("a9" in the example screenshot - right)</span>
+
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+
+
+
+---?image=/assets/images/slides/Slide8.JPG
+@title[Lab 2 Test Driver -Dh]
+<p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
+<span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type: <span style="background-color: #101010">`dh -d a9`</span></span>
+
+<div class="left1">
+<span style="font-size:0.7em" ><i>Note:</i>  The value `a9` is the driver handle for MyWizardDriver.  The handle value may change based on your system configuration.(see example screenshot - right)</span>
+
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+
+
+
+
+---?image=/assets/images/slides/Slide9.JPG
+@title[Lab 2 Test Driver -unload]
+<p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
+<span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type: <span style="background-color: #101010">`unload a9`</span></span>
+
+<div class="left1">
+<span style="font-size:0.7em" >See example screenshot - right</span><br>
+<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
+<span style="font-size:0.7em" >Notice results of `unload` command</span><br>
+<span style="font-size:0.7em" >Exit QEMU but </span><br>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+
+
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 3: Component Name Section]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 3: Component Name</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >In this lab, you’ll change the information reported to the drivers command using the ComponentName and ComponentName2 protocols.</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+---
+@title[Lab 3: Component Name ]
+<p align="Left"><span class="gold" >Lab 3: Component Name</span></p>
+<ul>
+   <li><span style="font-size:0.8em" ><b>Open</b> `~/src/edk2/MyWizardDriver/ComponentName.c`</span></li>
+   <li><span style="font-size:0.8em" ><b>Change</b>the string returned by the driver from MyWizardDriver to:  <span style="background-color: #101010">`UEFI Sample Driver`</span></span></li>
+<pre lang="c">
+```
+ /// Table of driver names
+ ///
+ GLOBAL_REMOVE_IF_UNREFERENCED 
+ EFI_UNICODE_STRING_TABLE mMyWizardDriverDriverNameTable[] = {
+   { "eng;en", (CHAR16 *)L"UEFI Sample Driver" },
+   { NULL, NULL }
+ };
+```
+</pre>
+   <li><span style="font-size:0.8em" >Save and close the file `~/src/edk2/MyWizardDriver/ComponentName.c`  </span></li>
+</ul>
+
+
+
+
+---
+@title[Lab 3 Build and Test Driver]
+<p align="right"><span class="gold" >Lab 3: Build and Test Driver</span></p>
+<span style="font-size:0.8em" >Build MyWizardDriver – Cd to ~/src/edk2 dir </span>
+```shell
+  bash$ build
+```
+<span style="font-size:0.8em" >Copy  MyWizardDriver.efi  to hda-contents</span>
+```shell
+ bash$ cd ~/run-ovmf/hda-contents
+ bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MyWizardDriver.efi .
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```shell
+  bash$ cd ~/run-ovmf
+  bash$ . RunQemu.sh
+```
+
+
+
+---?image=/assets/images/slides/Slide11.JPG
+@title[Lab 3 Build and Test Driver]
+<p align="right"><span class="gold" >Lab 3: Build and Test Driver</span></p>
+<div class="left1">
+<span style="font-size:0.6em" ><b>Load</b? the UEFI Driver from the shell</span><br>
+<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
+<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`drivers`</span></span><br>
+<span style="font-size:0.6em" >Observe the change in the string that the driver returned (right)</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
 
 
 
