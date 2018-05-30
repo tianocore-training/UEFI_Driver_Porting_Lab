@@ -128,12 +128,12 @@ continue to next slide
 <span style="font-size:0.7em" >Copy  MyWizardDriver.efi  to hda-contents</span>
 <pre lang="shell">
 ```
-  bash$ cd ~/run-ovmf/hda-contents
-  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MyWizardDriver.efi .
+ bash$ cd ~/run-ovmf/hda-contents
+ bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MyWizardDriver.efi .
 ```
 </pre>
 <span style="font-size:0.7em" >Test by Invoking Qemu</span>
-<pre lang="shell>
+<pre lang="shell">
 ```
  bash$ cd ~/run-ovmf
  bash$ . RunQemu.sh
