@@ -125,7 +125,7 @@ continue to next slide
 @title[Lab 2 Build and Test Driver 02]
 <p align="right"><span class="gold" >Lab 2: Build and Test Driver</span></p>
 <span style="font-size:0.8em" >Copy  MyWizardDriver.efi  to hda-contents</span>
-<pre lang="shell">
+<pre>
 ```
  bash$ cd ~/run-ovmf/hda-contents
  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MyWizardDriver.efi .
@@ -135,7 +135,7 @@ continue to next slide
 <span style="font-size:0.7em" >Test by Invoking Qemu</span>
 <pre lang="shell">
 ```
-   bash$ cd ~/run-ovmf
+    bash$ cd ~/run-ovmf
  bash$ . RunQemu.sh
 ```
 </pre>
