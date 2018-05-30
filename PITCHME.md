@@ -46,8 +46,8 @@ Note:
 <!---  Add bullets using https://fontawesome.com/cheatsheet certificate
 -->
 <ul style="list-style-type:none">
- <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;Compile a UEFI driver template created by UEFI Driver Wizard</span> </li><br><br>
- <li>@fa[certificate gp-bullet-cyan]<span style="font-size:0.9em">&nbsp;&nbsp;Test driver in QEMU using UEFI Shell 2.0</span></li><br><br>
+ <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;Compile a UEFI driver template from UEFI Driver Wizard</span> </li><br>
+ <li>@fa[certificate gp-bullet-cyan]<span style="font-size:0.9em">&nbsp;&nbsp;Test driver in QEMU using UEFI Shell 2.0</span></li><br>
  <li>@fa[certificate gp-bullet-yellow]<span style="font-size:0.9em">&nbsp;&nbsp;Port code into the template driver</span> </li>
 </ul>
 
@@ -88,12 +88,13 @@ Note:
    <li><span style="font-size:0.8em" >Perform <a href="https://gitpitch.com/Laurie0131/Platform_Build_LAB/master#/">Lab Setup</a> from previous Labs  </span></li>
    <li><span style="font-size:0.8em" >Open `~src/edk2/OvmfPkg/OvmfPkgX64.dsc`</span></li>
    <li><span style="font-size:0.8em" >Add the following to the `[Components]` section: </span><br><span style="font-size:0.6em" >Hint: add to the last module in the `[Components]` section   </span></li>
+<pre>
 
-```php
    MyWizardDriver/MyWizardDriver.inf{
       <LibraryClasses>    DebugLib|MdePkg/Library/UefiDebugLibConOut/UefiDebugLibConOut.inf
    }
-``` 
+
+</pre>
    <li><span style="font-size:0.8em" >Save and close the file  </span></li>
 </ul>
 
