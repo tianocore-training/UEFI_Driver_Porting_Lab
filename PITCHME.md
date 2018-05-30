@@ -157,16 +157,10 @@ Same as slide
 ---?image=/assets/images/slides/Slide7.JPG
 @title[Lab 2 Test Driver Drivers]
 <p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
-<span style="font-size:0.8em" >At the shell prompt Type: <span style="background-color: #101010">`drivers`</span></span>
-
-<div class="left1">
+<span style="font-size:0.8em" >At the shell prompt Type: <span style="background-color: #101010">`drivers`</span></span><br>
 <span style="font-size:0.7em" >Verify the UEFI Shell loaded the new driver. 
-The `drivers` command will display the driver information and a driver handle number ("a9" in the example screenshot - right)</span>
+The `drivers` command will display the driver information and a driver handle number ("a9" in the example screenshot )</span>
 
-</div>
-<div class="right1">
-<span style="font-size:0.8em" ></span>
-</div>
 
 Note:
 
@@ -179,11 +173,11 @@ Same as slide
 <p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
 <span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type: <span style="background-color: #101010">`dh -d a9`</span></span>
 
-<div class="left1">
-<span style="font-size:0.7em" ><i>Note:</i>  The value `a9` is the driver handle for MyWizardDriver.  The handle value may change based on your system configuration.(see example screenshot - right)</span>
+<div class="left">
+<span style="font-size:0.6em" ><i>Note:</i>  The value `a9` is the driver handle for MyWizardDriver.  The handle value may change based on your system configuration.(see example screenshot - right)</span>
 
 </div>
-<div class="right1">
+<div class="right">
 <span style="font-size:0.8em" ></span>
 </div>
 
@@ -200,10 +194,10 @@ Same as slide
 <span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type: <span style="background-color: #101010">`unload a9`</span></span>
 
 <div class="left1">
-<span style="font-size:0.7em" >See example screenshot - right</span><br>
-<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
-<span style="font-size:0.7em" >Notice results of `unload` command</span><br>
-<span style="font-size:0.7em" >Exit QEMU but </span><br>
+<span style="font-size:0.7em" >See example screenshot - below</span><br>
+<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span> again</span><br><br>
+<span style="font-size:0.7em" >Notice results of `unload` command</span><br><br>
+<span style="font-size:0.7em" >Exit QEMU </span><br>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" ></span>
@@ -229,7 +223,7 @@ Same as slide
 
 ---
 @title[Lab 3: Component Name ]
-<p align="Left"><span class="gold" >Lab 3: Component Name</span></p>
+<p align="right"><span class="gold" >Lab 3: Component Name</span></p>
 <ul>
    <li><span style="font-size:0.8em" ><b>Open</b> `~/src/edk2/MyWizardDriver/ComponentName.c`</span></li>
    <li><span style="font-size:0.8em" ><b>Change</b>the string returned by the driver from MyWizardDriver to:  <span style="background-color: #101010">`UEFI Sample Driver`</span></span></li>
@@ -273,14 +267,15 @@ Same as slide
 ---?image=/assets/images/slides/Slide11.JPG
 @title[Lab 3 Build and Test Driver]
 <p align="right"><span class="gold" >Lab 3: Build and Test Driver</span></p>
-<div class="left1">
-<span style="font-size:0.6em" ><b>Load</b? the UEFI Driver from the shell</span><br>
-<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
-<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span><br>
-<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`drivers`</span></span><br>
-<span style="font-size:0.6em" >Observe the change in the string that the driver returned (right)</span>
+<br>
+<div class="left">
+<span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`drivers`</span></span><br>
+<span style="font-size:0.8em" >Observe the change in the string that the driver returned </span>
 </div>
-<div class="right1">
+<div class="right">
 <span style="font-size:0.8em" ></span>
 </div>
 
