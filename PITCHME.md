@@ -46,7 +46,7 @@ Note:
 <!---  Add bullets using https://fontawesome.com/cheatsheet certificate
 -->
 <ul style="list-style-type:none">
- <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;Generate and compile a driver template </span> </li><br><br>
+ <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;Compile a UEFI driver template created by UEFI Driver Wizard</span> </li><br><br>
  <li>@fa[certificate gp-bullet-cyan]<span style="font-size:0.9em">&nbsp;&nbsp;Test driver in QEMU using UEFI Shell 2.0</span></li><br><br>
  <li>@fa[certificate gp-bullet-yellow]<span style="font-size:0.9em">&nbsp;&nbsp;Port code into the template driver</span> </li>
 </ul>
@@ -62,10 +62,10 @@ Note:
 @title[Lab 2: Building a UEFI Driver]
 <br>
 <br>
-<p align="Left"><span class="gold" >Lab 2: Building a UEFI Driver]</span></p>
+<p align="Left"><span class="gold" >Lab 2: Building a UEFI Driver</span></p>
 <br>
 <div class="left1">
-<span style="font-size:0.8em" >In this lab, you’ll build a UEFI Driver.  For this lab, you’ll include the driver in the OVMF project. Building the UEFI Driver from the Driver Wizard </span>
+<span style="font-size:0.8em" >In this lab, you’ll build a UEFI Driver.<br>You will include the driver in the OVMF project. <br>Build the UEFI Driver from the Driver Wizard </span>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -77,6 +77,7 @@ Note:
 
 Note:
 |Standalone |In a Project	|
+|-----------|--------------|
 |The build command directly compiles the .INF file |Include the .INF file in the project’s .DSC file	|
 |Results:  The driver’s  .EFI file is located in the Build directory|	Results:  The driver’s .EFI file is a part of the project in the Build directory|
 
@@ -86,7 +87,7 @@ Note:
 <ul>
    <li><span style="font-size:0.8em" >Perform <a href="https://gitpitch.com/Laurie0131/Platform_Build_LAB/master#/">Lab Setup</a> from previous Labs  </span></li>
    <li><span style="font-size:0.8em" >Open `~src/edk2/OvmfPkg/OvmfPkgX64.dsc`</span></li>
-   <li><span style="font-size:0.8em" >Add the following to the `[Components]` section: <br><span style="font-size:0.6em" ><Hint: add to the last module in the `[Components]` section   </span></li>
+   <li><span style="font-size:0.8em" >Add the following to the `[Components]` section: </span><br><span style="font-size:0.6em" >Hint: add to the last module in the `[Components]` section   </span></li>
 ```php
    MyWizardDriver/MyWizardDriver.inf{
       <LibraryClasses>    DebugLib|MdePkg/Library/UefiDebugLibConOut/UefiDebugLibConOut.inf
