@@ -490,9 +490,11 @@ Note:
 
 	return EFI_SUCCESS;
 ```
+<ul style="list-style-type:disc">
+ <li><span style="font-size:0.6em" >Notice the Library calls to `AllocateZeroPool()` and `SetMem16()`</span></li>
+ <li><span style="font-size:0.6em" >The `Start()` function is where there would be calls to "`gBS->InstallMultipleProtocolInterfaces()`"</span></li>
+</ul>
 
-<span style="font-size:0.7em" >Notice the Library calls to `AllocateZeroPool()` and `SetMem16()`</span><br>
-<span style="font-size:0.7em" >The `Start()` function is where there would be calls to "`gBS->InstallMultipleProtocolInterfaces()`"</span><br>
 
 Note:
 
@@ -617,15 +619,14 @@ Same as slide
   <li><span style="font-size:0.7em" >Check the QEMU debug console output.</span></li>
   <li><span style="font-size:0.7em" >Notice Debug messages indicate the driver did not return `EFI_SUCCESS` from the “`Supported()`” function most of the time.  </span></li>
   <li><span style="font-size:0.7em" >See that the "`Start()`" function did get called and a Buffer was allocated.</span></li>
-<br>
-  <li><span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
+ 
 </ul>
 </div>
 <div class="right2">
 <span style="font-size:0.8em" ></span>
 </div>
-
-   
+<br>
+   <span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
 
 
 
