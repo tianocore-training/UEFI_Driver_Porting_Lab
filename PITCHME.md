@@ -787,11 +787,11 @@ CreateNVVariable()
 @title[Lab 5: Update .h]
 <p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.h</span></p>
 <span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.h`"</span><br>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following in the list of library include statements: </span><br>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following after the list of library include statements: </span><br>
 ```C
 #include <Library/UefiRuntimeServicesTableLib.h>
 ```
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following in the list of protocol include statements: </span><br>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following after the list of protocol include statements: </span><br>
 ```C
 #include "MyWizardDriverNVDataStruc.h"	
 ```
