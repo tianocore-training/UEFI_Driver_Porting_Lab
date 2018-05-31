@@ -746,7 +746,7 @@ MYWIZARDDRIVER_CONFIGURATION   *mMyWizDrv_Conf = &mMyWizDrv_Conf_buffer;  //use 
 ---
 @title[Lab 5: Add new function ]
 <p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
-<span style="font-size:0.7em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.6em" > the new function before the call to 
+<span style="font-size:0.7em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.5em" > the new function before the call to 
       "`MyWizardDriverDriverEntryPoint()`" </span>
 ```c
 EFI_STATUS
