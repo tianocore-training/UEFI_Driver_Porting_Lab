@@ -659,7 +659,7 @@ With QEMU there is a serial device so the driver’s start function would then s
 <p align="center"><span class="gold" >Lab 5: Adding a NVRAM Variable Steps </span></p>
 <br>
 <ol>
-  <li><span style="font-size:0.8em" >Create .h file with new <font color="blue">`typedef`</font> and GUID </span></li>
+  <li><span style="font-size:0.8em" >Create .h file with new <font color="cyan">`typedef`</font> and <font color="cyan">`GUID`</font> </span></li>
   <li><span style="font-size:0.8em" >Include the new .h file in the driver's top .h file </span></li>
   <li><span style="font-size:0.8em" >`EntryPoint()` Init new buffer for NVRam Variable   </span></li>
   <li><span style="font-size:0.8em" >`Supported()` make a call to a new function to set/get the new NVRam Variable  </span></li>
@@ -741,47 +741,10 @@ MYWIZARDDRIVER_CONFIGURATION   *mMyWizDrv_Conf = &mMyWizDrv_Conf_buffer;  //use 
 
 ```
 
-
----
-@title[Lab 5: add new function ]
-<p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
+---?code=sample/CreateNV.c&lang=c++&title=add new function
 <span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the new function "`CreateNVVariable()`" before the call to 
-      "`MyWizardDriverDriverEntryPoint()`" and after the call to "`MyWizardDriverUnload()`"</span><br>
-<span style="font-size:0.8em" ><b>Save</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.c`"</span>	  
-```C
-EFI_STATUS
-EFIAPI
-CreateNVVariable()
-{
-	EFI_STATUS            	Status;
-	UINTN                  BufferSize;
+      "`MyWizardDriverDriverEntryPoint()`" and after the call to "`MyWizardDriverUnload()`" </span>
 
-	BufferSize = sizeof (MYWIZARDDRIVER_CONFIGURATION);
-	Status = gRT->GetVariable(
-		mVariableName,
-		&mMyWizardDriverVarGuid,
-		NULL,
-		&BufferSize,
-		mMyWizDrv_Conf
-		);
-	if (EFI_ERROR(Status)) {  // Not definded yet so add it to the NV Variables.
-		if (Status == EFI_NOT_FOUND) {
-			Status = gRT->SetVariable(
-				mVariableName,
-				&mMyWizardDriverVarGuid,
-				EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS,
-				sizeof (MYWIZARDDRIVER_CONFIGURATION),
-				mMyWizDrv_Conf   //  buffer is 000000  now for first time set
-				);
-			DEBUG((EFI_D_INFO, "[MyWizardDriver] Variable %s created in NVRam Var\r\n", mVariableName));
-			return EFI_SUCCESS;
-		}
-	}
-	// already defined once 
-	return EFI_UNSUPPORTED;
-}
-
-```
 
 
 ---
@@ -797,6 +760,7 @@ CreateNVVariable()
 #include "MyWizardDriverNVDataStruc.h"	
 ```
 <span style="font-size:0.8em" ><b>Save</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.h`"</span><br>
+<span style="font-size:0.8em" ><b>Save</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.c`"</span>	  
 
 
 
@@ -844,7 +808,7 @@ Same as slide
 
 
 
----?image=/assets/images/slides/Slide25.JPG
+---?image=/assets/images/slides/Slide26.JPG
 @title[Lab 5 Test Driver]
 <p align="right"><span class="gold" >Lab 5: Test Driver</span></p>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`mem 0x6808018`</span></span><br>
