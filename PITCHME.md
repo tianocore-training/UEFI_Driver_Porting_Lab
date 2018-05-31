@@ -140,7 +140,7 @@ continue to next slide
 ```
 </pre>
 <span style="font-size:0.7em" >Load the UEFI Driver from the shell</span><br>
-<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
+<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
 <span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span>
 
 </div>
@@ -269,8 +269,8 @@ Same as slide
 @title[Lab 3 Build and Test Driver]
 <p align="right"><span class="gold" >Lab 3: Build and Test Driver</span></p>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
@@ -467,10 +467,12 @@ MyWizardDriverDriverBindingStart (
 }
 ```
 </pre>
-   <li><span style="font-size:0.8em" > copy and past (next slide)</span></li>
+   
 </ul>
 
 Note: 
+
+
 ---
 @title[Lab 4: Update Start 02 ]
 <p align="right"><span class="gold" >Lab 4: Update Start Add Code </span></p>
@@ -503,7 +505,7 @@ This code checks for an allocated memory buffer. If the buffer doesn’t exist, 
 <div class="left1">
 <ul style="list-style-type:none">
   <li>@fa[book gp-bullet-gold]<span style="font-size:0.8em" >&nbsp;&nbsp;`DEBUG( )`	 include - `[DebugLib.h]`</span></li><br>
-  <li><span style="font-size:0.8em" >`DEBUG()` statements can show status progress interest points throuhout  the driver code</span></li>
+  <li><span style="font-size:0.8em" >`DEBUG()` Macro statements can show status progress interest points throuhout  the driver code</span></li>
 </ul>
 </div>
 <div class="right1">
@@ -514,7 +516,7 @@ This code checks for an allocated memory buffer. If the buffer doesn’t exist, 
 ---
 @title[Lab 4: Add Debug statements supported ]
 <p align="right"><span class="gold" >Lab 4: Add Debug Statements `Supported()`</span></p>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following DEBUG macros for the supported function:</span>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following  <span style="background-color: #101010">`DEBUG` </span> macros for the supported function:</span>
 ```C
 	Status = gBS->OpenProtocol(
 		ControllerHandle,
@@ -539,8 +541,6 @@ This code checks for an allocated memory buffer. If the buffer doesn’t exist, 
 		);
 	DEBUG((EFI_D_INFO, "[MyWizardDriver] Supported SUCCESS\r\n"));
 	return EFI_SUCCESS;
-  //return EFI_UNSUPPORTED;
-}
 ```	
 @[11](Copy / Paste DEBUG macro here. The `Status` variable depends on the output of the `OpenProtocol` function.)
 @[22](Copy / Paste another DEBUG macro here. It is only display when the Supported function returns EFI_SUCCESS.)
@@ -550,9 +550,10 @@ This code checks for an allocated memory buffer. If the buffer doesn’t exist, 
 ---
 @title[Lab 4: Add Debug statements start ]
 <p align="right"><span class="gold" >Lab 4: Add Debug Statements `Start()`</span></p>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following DEBUG macro for the Start function just before the `return EFI_SUCCESS;` statement</span>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following <span style="background-color: #101010">`DEBUG`</span> macro for the Start function just before the <span style="background-color: #101010">`return EFI_SUCCESS;` statement</span></span>
 ```C
-DEBUG ((EFI_D_INFO, "\r\n***\r\n[MyWizardDriver] Buffer 0x%08x\r\n", DummyBufferfromStart));
+  DEBUG ((EFI_D_INFO, "\r\n***\r\n[MyWizardDriver] Buffer 0x%08x\r\n", DummyBufferfromStart));
+  return EFI_SUCCESS;
 ```	
 <span style="font-size:0.7em" ><i>Note: </i>This debug macro displays the memory address of the allocated buffer on the debug console</span><br>
 <br>
@@ -585,13 +586,13 @@ DEBUG ((EFI_D_INFO, "\r\n***\r\n[MyWizardDriver] Buffer 0x%08x\r\n", DummyBuffer
 ---?image=/assets/images/slides/Slide20.JPG
 @title[Lab 4 Build and Test Driver 02]
 <p align="right"><span class="gold" >Lab 4: Build and Test Driver</span></p>
+<br>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
-<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
-<span style="font-size:0.7em" >Observe the change in the string that the driver returned </span><br>
+<span style="font-size:0.7em" ></span></span><br>
 <br>
 </div>
 <div class="right">
@@ -608,15 +609,16 @@ Same as slide
 <br>
 <p align="left"><span class="gold" >Lab 4: Build and Test Driver</span></p>
 <br>
-<div class="left1">
+<div class="left2">
 <span style="font-size:0.8em" >Check the QEMU debug console output.</span><br>
 <span style="font-size:0.8em" >Notice Debug messages indicate the driver did not return EFI_SUCCESS from the “Supported” function most of the time.  </span><br>
 <span style="font-size:0.8em" >See that the Start function did get called and a Buffer was allocated.</span><br>
 <br>
+<span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span>
 <span style="font-size:0.8em" >
 </div>
-<div class="right1">
-<span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span>
+<div class="right2">
+<span style="font-size:0.8em" ></span>
 </div>
 
    
