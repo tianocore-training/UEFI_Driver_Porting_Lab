@@ -380,7 +380,7 @@ This code checks for a specific protocol before returning a status for the suppo
 ---
 @title[Lab 4: Update Supported 02 ]
 <p align="right"><span class="gold" >Lab 4: Update Supported Add Code </span></p>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following code for the supported function:</span>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following code for the supported function ` MyWizardDriverDriverBindingSupported()`:</span>
 ```C
   EFI_STATUS Status;
   EFI_SERIAL_IO_PROTOCOL *SerialIo;
@@ -627,7 +627,240 @@ Same as slide
 <span style="font-size:0.8em" ></span>
 </div>
 <br>
+
+
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 5: Create NV Var Section]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 5: Create a NVRAM Variable </span></p>
+<br>
+<div class="left1">
+<ul>
+  <li><span style="font-size:0.8em" >In this lab you’ll create a non-volatile UEFI variable (NVRAM), and set and get the variable to return a successful supported function </span></li>
+  <li><span style="font-size:0.8em" >Use Runtime services to "`SetVariable()`" and "`GetVariable()`"</li>
+
+</ul>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
  
+Note:
+
+On systems without a serial port, the code from previous lab will not work since the Serial Protocol GUID does not exist. This lab demonstrates another mechanism (also known as “a trick”) to return from the “Supported” function.  
+
+With QEMU there is a serial device so the driver’s start function would then start to manage the serial port by creating child handles. 
+
+
+---
+@title[Lab 5: Create NV Var steps]
+<br>
+<p align="center"><span class="gold" >Lab 5: Adding a NVRAM Variable Steps </span></p>
+<br>
+<ol>
+  <li><span style="font-size:0.8em" >Create .h file with new <font color="blue">`typedef`</font> and GUID </span></li>
+  <li><span style="font-size:0.8em" >Include the new .h file in the driver's top .h file </span></li>
+  <li><span style="font-size:0.8em" >`EntryPoint()` Init new buffer for NVRam Variable   </span></li>
+  <li><span style="font-size:0.8em" >`Supported()` make a call to a new function to set/get the new NVRam Variable  </span></li>
+</ol>
+
+
+
+---
+@title[Lab 5: Create a new .h file ]
+<p align="right"><span class="gold" >Lab 5: Create a new .h file</span></p>
+<span style="font-size:0.8em" ><b>Create</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > a new file in your editor called: "`MyWizardDriverNVDataStruc.h`"</span><br>
+<span style="font-size:0.8em" ><b>Copy, Paste & Save</b>&nbsp;&nbsp;</span>
+```C
+#ifndef _MYWIZARDDRIVERNVDATASTRUC_H_
+#define _MYWIZARDDRIVERNVDATASTRUC_H_
+#include <Guid/HiiPlatformSetupFormset.h>
+#include <Guid/HiiFormMapMethodGuid.h>
+
+#define MYWIZARDDRIVER_VAR_GUID \
+  { \
+	0x363729f9, 0x35fc, 0x40a6, 0xaf, 0xc8, 0xe8, 0xf5, 0x49, 0x11, 0xf1, 0xd6 \
+  }
+
+#pragma pack(1)
+typedef struct {
+
+    UINT16  MyWizardDriverStringData[20];
+    UINT8   MyWizardDriverHexData;
+    UINT8   MyWizardDriverBaseAddress;
+    UINT8   MyWizardDriverChooseToEnable;
+ 
+} MYWIZARDDRIVER_CONFIGURATION;
+
+#pragma pack()
+
+#endif
+
+```
+
+Note:
+
+- In order to set, retrieve, and use the UEFI variable, it requires the GUID reference that you just added.
+
+- another Note:  For this lab, you were provided a GUID file.  You can also generate a GUID through the UEFI Driver Wizard or Guidgenerator.com.  But for the purposes of the lab, use the one above.
+
+
+
+---
+@title[Lab 5: Add New Vars to .c ]
+<p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
+<span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.c`"</span><br>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following after the `#include "MyWizardDriver.h"` statement: </span><br>
+```C
+#include "MyWizardDriver.h"
+
+EFI_GUID   mMyWizardDriverVarGuid = MYWIZARDDRIVER_VAR_GUID;
+
+CHAR16     mVariableName[] = L"MWD_NVData";
+MYWIZARDDRIVER_CONFIGURATION   mMyWizDrv_Conf_buffer;
+MYWIZARDDRIVER_CONFIGURATION   *mMyWizDrv_Conf = &mMyWizDrv_Conf_buffer;  //use the pointer 
+```
+
+
+---
+@title[Lab 5: Update Suppport for new function ]
+<p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
+<span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`MyWizardDriverDriverBindingSupported ()`" function</span><br>
+<span style="font-size:0.8em" ><b>Comment out</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the `DEBUG` macro statement and return statement as below: </span><br>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the new "`CreateNVVariable();`" call as below: </span><br>
+```C
+	if (EFI_ERROR(Status)) {
+		//DEBUG((EFI_D_INFO, "[MyWizardDriver] Not Supported \r\n"));
+		//return Status; // Bail out if OpenProtocol returns an error
+		Status = CreateNVVariable();
+		if (EFI_ERROR(Status)) {
+			DEBUG((EFI_D_ERROR, "[MyWizardDriver] Not Supported \r\n"));
+			return Status; // Status now depends on CreateNVVariable Function
+		}
+
+```
+
+
+---
+@title[Lab 5: add new function ]
+<p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the new function "`CreateNVVariable()`" before the call to 
+      "`MyWizardDriverDriverEntryPoint()`" and after the call to "`MyWizardDriverUnload()`"</span><br>
+<span style="font-size:0.8em" ><b>Save</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.c`"</span>	  
+```C
+EFI_STATUS
+EFIAPI
+CreateNVVariable()
+{
+	EFI_STATUS            	Status;
+	UINTN                  BufferSize;
+
+	BufferSize = sizeof (MYWIZARDDRIVER_CONFIGURATION);
+	Status = gRT->GetVariable(
+		mVariableName,
+		&mMyWizardDriverVarGuid,
+		NULL,
+		&BufferSize,
+		mMyWizDrv_Conf
+		);
+	if (EFI_ERROR(Status)) {  // Not definded yet so add it to the NV Variables.
+		if (Status == EFI_NOT_FOUND) {
+			Status = gRT->SetVariable(
+				mVariableName,
+				&mMyWizardDriverVarGuid,
+				EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS,
+				sizeof (MYWIZARDDRIVER_CONFIGURATION),
+				mMyWizDrv_Conf   //  buffer is 000000  now for first time set
+				);
+			DEBUG((EFI_D_INFO, "[MyWizardDriver] Variable %s created in NVRam Var\r\n", mVariableName));
+			return EFI_SUCCESS;
+		}
+	}
+	// already defined once 
+	return EFI_UNSUPPORTED;
+}
+
+```
+
+
+---
+@title[Lab 5: Update .h]
+<p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.h</span></p>
+<span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.h`"</span><br>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following in the list of library include statements: </span><br>
+```C
+#include <Library/UefiRuntimeServicesTableLib.h>
+```
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following in the list of protocol include statements: </span><br>
+```C
+#include "MyWizardDriverNVDataStruc.h"	
+```
+<span style="font-size:0.8em" ><b>Save</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.h`"</span><br>
+
+
+
+
+---
+@title[Lab 5 Build and Test Driver]
+<p align="right"><span class="gold" >Lab 5: Build and Test Driver</span></p>
+<br>
+<span style="font-size:0.8em" >Build MyWizardDriver – Cd to ~/src/edk2 dir </span>
+```shell
+  bash$ build
+```
+<span style="font-size:0.8em" >Copy  MyWizardDriver.efi  to hda-contents</span>
+```shell
+ bash$ cd ~/run-ovmf/hda-contents
+ bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MyWizardDriver.efi .
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```shell
+  bash$ cd ~/run-ovmf
+  bash$ . RunQemu.sh
+```
+
+
+
+---?image=/assets/images/slides/Slide25.JPG
+@title[Lab 5 Build and Test Driver]
+<p align="right"><span class="gold" >Lab 5: Build and Test Driver</span></p>
+<span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
+<br>
+<div class="left">
+<span style="font-size:0.7em" >Observe the Buffer address returned by the debug statement</span></span><br>
+<span style="font-size:0.7em" ></span><br>
+
+</div>
+<div class="right">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+
+
+
+---?image=/assets/images/slides/Slide25.JPG
+@title[Lab 5 Test Driver]
+<p align="right"><span class="gold" >Lab 5: Test Driver</span></p>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`mem 0x6808018`</span></span><br>
+<br>
+<div class="left">
+<span style="font-size:0.7em" >Observe the Buffer is filled with the letter "B"</span></span><br>
+<span style="font-size:0.7em" ></span><br>
+
+</div>
+<div class="right">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
 
 
 
