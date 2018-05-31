@@ -476,7 +476,7 @@ Note:
 ---
 @title[Lab 4: Update Start 02 ]
 <p align="right"><span class="gold" >Lab 4: Update Start Add Code </span></p>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following code for the start function:</span>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following code for the start function ` MyWizardDriverDriverBindingStart()`:</span>
 ```C
 	if (DummyBufferfromStart == NULL) {     // was buffer already allocated?
 		DummyBufferfromStart = (CHAR16*)AllocateZeroPool (DUMMY_SIZE * sizeof(CHAR16));
@@ -487,14 +487,17 @@ Note:
 	}
 
 	SetMem16 (DummyBufferfromStart, (DUMMY_SIZE * sizeof(CHAR16)), 0x0042);  // Fill buffer
-	DEBUG ((EFI_D_INFO, "[MyWizardDriver] Buffer 0x%08x\r\n", DummyBufferfromStart));
+
 	return EFI_SUCCESS;
 ```
 
+<span style="font-size:0.7em" >Notice the Library calls to `AllocateZeroPool()` and `SetMem16()`</span><br>
+<span style="font-size:0.7em" >The `Start()` function is where there would be calls to "`gBS->InstallMultipleProtocolInterfaces()`"</span><br>
+
 Note:
 
-This code checks for an allocated memory buffer. If the buffer doesn’t exist, memory will be allocated and filled with an initial value (0x0042). 
-
+- This code checks for an allocated memory buffer. If the buffer doesn’t exist, memory will be allocated and filled with an initial value (0x0042). 
+- this lab's start does **not** do anything useful but if it did it would make calls to gBS->InstallMultipleProtocolInterfaces() to produce potocols and manage other handle devices
 
 
 ---?image=/assets/images/slides/Slide18.JPG
@@ -516,7 +519,7 @@ This code checks for an allocated memory buffer. If the buffer doesn’t exist, 
 ---
 @title[Lab 4: Add Debug statements supported ]
 <p align="right"><span class="gold" >Lab 4: Add Debug Statements `Supported()`</span></p>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following  <span style="background-color: #101010">`DEBUG` </span> macros for the supported function:</span>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following  <span style="background-color: #101010">`DEBUG ()` </span> macros for the supported function:</span>
 ```C
 	Status = gBS->OpenProtocol(
 		ControllerHandle,
@@ -550,7 +553,7 @@ This code checks for an allocated memory buffer. If the buffer doesn’t exist, 
 ---
 @title[Lab 4: Add Debug statements start ]
 <p align="right"><span class="gold" >Lab 4: Add Debug Statements `Start()`</span></p>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following <span style="background-color: #101010">`DEBUG`</span> macro for the Start function just before the <span style="background-color: #101010">`return EFI_SUCCESS;` statement</span></span>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following <span style="background-color: #101010">`DEBUG`</span> macro for the Start function just before the <span style="background-color: #101010">`return EFI_SUCCESS;` </span>statement</span></span>
 ```C
   DEBUG ((EFI_D_INFO, "\r\n***\r\n[MyWizardDriver] Buffer 0x%08x\r\n", DummyBufferfromStart));
   return EFI_SUCCESS;
@@ -610,12 +613,13 @@ Same as slide
 <p align="left"><span class="gold" >Lab 4: Build and Test Driver</span></p>
 <br>
 <div class="left2">
-<span style="font-size:0.8em" >Check the QEMU debug console output.</span><br>
-<span style="font-size:0.8em" >Notice Debug messages indicate the driver did not return EFI_SUCCESS from the “Supported” function most of the time.  </span><br>
-<span style="font-size:0.8em" >See that the Start function did get called and a Buffer was allocated.</span><br>
+<ul>
+  <li><span style="font-size:0.7em" >Check the QEMU debug console output.</span></li>
+  <li><span style="font-size:0.7em" >Notice Debug messages indicate the driver did not return `EFI_SUCCESS` from the “`Supported()`” function most of the time.  </span></li>
+  <li><span style="font-size:0.7em" >See that the "`Start()`" function did get called and a Buffer was allocated.</span></li>
 <br>
-<span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span>
-<span style="font-size:0.8em" >
+  <li><span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
+</ul>
 </div>
 <div class="right2">
 <span style="font-size:0.8em" ></span>
