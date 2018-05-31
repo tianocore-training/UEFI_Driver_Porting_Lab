@@ -8,7 +8,7 @@
 <br>
 <span style="font-size:0.75em" ><a href='http://www.tianocore.org'>tianocore.org</a></span>
 Note:
-  PITCHME.md for UEFI / EDK II Training  UEFI Driver Model and Driver Wizard Pres
+  PITCHME.md for UEFI / EDK II Training  UEFI Driver Porting Lab
 
   Copyright (c) 2018, Intel Corporation. All rights reserved.<BR>
 
@@ -55,7 +55,7 @@ Note:
 @title[UEFI Driver Lab]
 <br><br><br><br><br><br><br>
 ### <span class="gold"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UEFI Driver Porting Lab </span>
-<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This Lab uses the template UEFI driver created by the UEFI Driver Wizard</span>
 
 
 ---?image=/assets/images/slides/Slide_LabSec.JPG
@@ -65,7 +65,7 @@ Note:
 <p align="Left"><span class="gold" >Lab 2: Building a UEFI Driver</span></p>
 <br>
 <div class="left1">
-<span style="font-size:0.8em" >In this lab, you’ll build a UEFI Driver.<br>You will include the driver in the OVMF project. <br>Build the UEFI Driver from the Driver Wizard </span>
+<span style="font-size:0.8em" >In this lab, you’ll build a UEFI Driver created by the UEFI Driver Wizard.<br>You will include the driver in the OVMF project. <br>Build the UEFI Driver from the Driver Wizard </span>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -285,6 +285,171 @@ Same as slide
 Note:
 
 Same as slide
+
+
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 4: Port Supported Section]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 4: Writing the Supported / Start Functions</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >The UEFI Driver Wizard produced a starting point for driver porting … so now what?<br><br>In this lab, you’ll port the “Supported” and “Start” functions for the UEFI driver</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+
+
+---?image=/assets/images/slides/Slide13.JPG
+@title[Lab 4: Port Supported-Start]
+<p align="center"><span class="gold" >Lab 4: Porting Supported and Start</span></p>
+<span style="font-size:0.8em" >Review the Driver Binding Protocol</span>
+
+Note:
+
+- Port Supported() to check for a specific protocol before returning ‘Success’
+- Port Start() to allocate a memory buffer and fill it with a specific value
+
+---
+@title[Lab 4: Supported Port]
+<p align="right"><span class="gold" >Lab 4: The `Supported()` Port</span></p>
+<span style="font-size:0.8em" >The UEFI Driver Wizard produced a `Supported()` but only returns `EFI_UNSUPPORTED` </span><br>
+<span style="font-size:0.8em" ><Font color="yellow">Supported Goals: </font> </span></li>
+<ul style="list-style-type:none">
+  <li><span style="font-size:0.8em" >Checks if the driver supports the device for the specified controller handle </span></li>
+  <li><span style="font-size:0.8em" >Associates the driver with the Serial I/O protocol </span></li>
+  <li><span style="font-size:0.8em" >Helps locate a protocol’s specific GUID through  UEFI Boot Services’ function </span></li>
+</ul>
+
+Note: 
+
+Same as slide
+
+
+---?image=/assets/images/slides/Slide16.JPG
+@title[Lab 4: Help from Robust Libraries]
+<p align="right"><span class="gold" >Lab 4: Help from Robust Libraries</span></p>
+<span style="font-size:0.8em" >EDK II has libraries to help with porting UEFI Drivers </span><br>
+<ul style="list-style-type:none">
+  <li>@fa[book gp-bullet-gold]<span style="font-size:0.8em" >&nbsp;&nbsp;`AllocateZeroPool()` include - `[MemoryAllocationLib.h]`  </span></li>
+  <li>@fa[book gp-bullet-gold]<span style="font-size:0.8em" >&nbsp;&nbsp;`SetMem16()`   include - `[BaseMemoryLib.h]`  </span></li>
+</ul>
+<br>
+<span style="font-size:0.6em" >Check the MdePkg with libraries help file (.chm format) </span><br>
+
+
+Note: 
+
+
+---?image=/assets/images/slides/Slide16.JPG
+@title[Lab 4: Debugging before Testing the Driver ]
+<p align="right"><span class="gold" >Lab 4: Debugging before Testing the Driver</span></p>
+<span style="font-size:0.8em" >UEFI drivers can use the EDK II debug library </span><br>
+
+<div class="left1">
+<ul style="list-style-type:none">
+  <li>@fa[book gp-bullet-gold]<span style="font-size:0.8em" >&nbsp;&nbsp;`DEBUG( )`	 include - `[DebugLib.h]`</span></li><br>
+  <li><span style="font-size:0.8em" >`DEBUG()` statements can show status interest points throuhout  the driver code</span></li>
+</ul>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;</span>
+</div>
+
+---
+@title[Lab 4: Update Supported ]
+<p align="right"><span class="gold" >Lab 4: Update Supported </span></p>
+<ul>
+   <li><span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > `~/src/edk2/MyWizardDriver/MyWizardDriver.c`</span></li>
+   <li><span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > ` MyWizardDriverDriverBindingSupported()`, 
+       the supported function for this driver and comment out the "`//`" in the line: `return EFI_UNSUPPORTED;` </span></li>
+<pre lang="c">
+```
+EFI_STATUS
+EFIAPI
+MyWizardDriverDriverBindingSupported (
+  IN EFI_DRIVER_BINDING_PROTOCOL  *This,
+  IN EFI_HANDLE                   ControllerHandle,
+  IN EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath OPTIONAL
+  )
+{
+  // return EFI_UNSUPPORTED;
+}
+```
+</pre>
+   <li><span style="font-size:0.8em" > copy and past (next slide)</span></li>
+</ul>
+
+Note: 
+
+This code checks for a specific protocol before returning a status for the supported function (EFI_SUCCESS if the protocol GUID exists).
+
+
+---
+@title[Lab 4: Update Supported 02 ]
+<p align="right"><span class="gold" >Lab 3: Update Supported Add Code </span></p>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following code for the supported function:</span>
+```C
+  EFI_STATUS Status;
+  EFI_SERIAL_IO_PROTOCOL *SerialIo;
+  Status = gBS->OpenProtocol (
+     ControllerHandle,
+                  &gEfiSerialIoProtocolGuid,
+                  (VOID **) &SerialIo,
+                  This->DriverBindingHandle,
+                  ControllerHandle,
+                  EFI_OPEN_PROTOCOL_BY_DRIVER | EFI_OPEN_PROTOCOL_EXCLUSIVE
+                  );
+
+  if (EFI_ERROR (Status)) {
+	 return Status; // Bail out if OpenProtocol returns an error
+  }
+
+    // We're here because OpenProtocol was a success, so clean up
+     gBS->CloseProtocol (
+        ControllerHandle,
+        &gEfiSerialIoProtocolGuid,
+        This->DriverBindingHandle,
+        ControllerHandle
+        );
+  	
+     return EFI_SUCCESS; 
+```
+
+
+---
+@title[Lab 4: Notice UEFI Driver Wizard Includes  ]
+<p align="right"><span class="gold" >Lab 4: Notice UEFI Driver Wizard Includes</span></p>
+<ul>
+   <li><span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > `~/src/edk2/MyWizardDriver/MyWizardDriver.h`</span></li>
+   <li><span style="font-size:0.8em" ><b>Notice</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following include statement is already included by the driver wizard: </span></li>
+<pre lang="c">
+```
+// Produced Protocols
+//
+#include <Protocol/SerialIo.h>
+```
+</pre>
+   <li><span style="font-size:0.8em" ><b>Review</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the Libraries section and see that UEFI Driver Wizard automatically includes library headers based on the form information. Also other common libary headers were included </span></li>
+<pre lang="c">
+```
+// Libraries
+//
+#include <Library/UefiBootServicesTableLib.h>
+#include <Library/MemoryAllocationLib.h>
+#include <Library/BaseMemoryLib.h>
+#include <Library/BaseLib.h>
+#include <Library/UefiLib.h>
+#include <Library/DevicePathLib.h>
+#include <Library/DebugLib.h>
+```
+</pre>
+</ul>
+
+Note: 
+
 
 
 
