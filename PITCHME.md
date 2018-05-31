@@ -747,7 +747,7 @@ MYWIZARDDRIVER_CONFIGURATION   *mMyWizDrv_Conf = &mMyWizDrv_Conf_buffer;  //use 
 @title[Lab 5: Add new function ]
 <p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
 <span style="font-size:0.7em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.6em" > the new function "`CreateNVVariable()`" before the call to 
-      "`MyWizardDriverDriverEntryPoint()`" and after the call to "`MyWizardDriverUnload()`" </span>
+      "`MyWizardDriverDriverEntryPoint()`" </span>
 ```c
 EFI_STATUS
 EFIAPI
