@@ -354,7 +354,7 @@ Note:
 <ul>
    <li><span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > `~/src/edk2/MyWizardDriver/MyWizardDriver.c`</span></li>
    <li><span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > ` MyWizardDriverDriverBindingSupported()`, 
-       the supported function for this driver and comment out the "`//`" in the line: `return EFI_UNSUPPORTED;` </span></li>
+       the supported function for this driver and comment out the "`//`" in the line: <span style="background-color: #101010">"`return EFI_UNSUPPORTED;` "</span> </span></li>
 <pre lang="c">
 ```
 EFI_STATUS
@@ -385,7 +385,7 @@ This code checks for a specific protocol before returning a status for the suppo
   EFI_STATUS Status;
   EFI_SERIAL_IO_PROTOCOL *SerialIo;
   Status = gBS->OpenProtocol (
-     ControllerHandle,
+                  ControllerHandle,
                   &gEfiSerialIoProtocolGuid,
                   (VOID **) &SerialIo,
                   This->DriverBindingHandle,
@@ -445,14 +445,14 @@ Note:
 @title[Lab 4: Update the Start  ]
 <p align="right"><span class="gold" >Lab 4: Update the `Start()` </span></p>
 <ul>
-   <li><span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following in  `MyWizardDriver.c` after the `#include “MyWizardDriver.h”` line: </span></li>
+   <li><span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following in  `MyWizardDriver.c` after the <span style="background-color: #101010">`#include “MyWizardDriver.h”` </span>line: </span></li>
 <pre lang="c">
 ```
 #define  DUMMY_SIZE 100*16		// Dummy buffer
 CHAR16	*DummyBufferfromStart = NULL;
 ```
 </pre>
-    <li><span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > ` MyWizardDriverDriverBindingStart()`,  the start function for this driver and comment out the "`//`" in the line: `return EFI_UNSUPPORTED;` </span></li>
+    <li><span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > ` MyWizardDriverDriverBindingStart()`,  the start function for this driver and comment out the "`//`" in the line <span style="background-color: #101010">"`return EFI_UNSUPPORTED;` "</span></span></li>
 <pre lang="c">
 ```
 EFI_STATUS
@@ -491,8 +491,8 @@ Note:
 	return EFI_SUCCESS;
 ```
 <ul style="list-style-type:disc">
- <li><span style="font-size:0.6em" >Notice the Library calls to `AllocateZeroPool()` and `SetMem16()`</span></li>
- <li><span style="font-size:0.6em" >The `Start()` function is where there would be calls to "`gBS->InstallMultipleProtocolInterfaces()`"</span></li>
+ <li><span style="font-size:0.65em" >Notice the Library calls to `AllocateZeroPool()` and `SetMem16()`</span></li>
+ <li><span style="font-size:0.65em" >The `Start()` function is where there would be calls to "`gBS->InstallMultipleProtocolInterfaces()`"</span></li>
 </ul>
 
 
@@ -621,12 +621,13 @@ Same as slide
   <li><span style="font-size:0.7em" >See that the "`Start()`" function did get called and a Buffer was allocated.</span></li>
  
 </ul>
+   <span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
 </div>
 <div class="right2">
 <span style="font-size:0.8em" ></span>
 </div>
 <br>
-   <span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
+ 
 
 
 
