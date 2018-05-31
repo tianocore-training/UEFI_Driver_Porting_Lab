@@ -55,7 +55,7 @@ Note:
 @title[UEFI Driver Lab]
 <br><br><br><br><br><br><br>
 ### <span class="gold"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UEFI Driver Porting Lab </span>
-<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This Lab uses the template UEFI driver created by the UEFI Driver Wizard</span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This Lab uses the template UEFI driver created by the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UEFI Driver Wizard</span>
 
 
 ---?image=/assets/images/slides/Slide_LabSec.JPG
@@ -291,7 +291,7 @@ Same as slide
 @title[Lab 4: Port Supported Section]
 <br>
 <br>
-<p align="Left"><span class="gold" >Lab 4: Writing the Supported / Start Functions</span></p>
+<p align="Left"><span class="gold" >Lab 4: Porting the Supported & Start Functions</span></p>
 <br>
 <div class="left1">
 <span style="font-size:0.8em" >The UEFI Driver Wizard produced a starting point for driver porting … so now what?<br><br>In this lab, you’ll port the “Supported” and “Start” functions for the UEFI driver</span>
@@ -305,7 +305,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide13.JPG
 @title[Lab 4: Port Supported-Start]
 <p align="center"><span class="gold" >Lab 4: Porting Supported and Start</span></p>
-<span style="font-size:0.8em" >Review the Driver Binding Protocol</span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Review the Driver Binding Protocol</span>
 
 Note:
 
@@ -315,9 +315,9 @@ Note:
 ---
 @title[Lab 4: Supported Port]
 <p align="right"><span class="gold" >Lab 4: The `Supported()` Port</span></p>
-<span style="font-size:0.8em" >The UEFI Driver Wizard produced a `Supported()` but only returns `EFI_UNSUPPORTED` </span><br>
+<span style="font-size:0.8em" >The UEFI Driver Wizard produced a `Supported()` function but it only returns `EFI_UNSUPPORTED` </span><br>
 <span style="font-size:0.8em" ><Font color="yellow">Supported Goals: </font> </span></li>
-<ul style="list-style-type:none">
+<ul style="list-style-type:disc">
   <li><span style="font-size:0.8em" >Checks if the driver supports the device for the specified controller handle </span></li>
   <li><span style="font-size:0.8em" >Associates the driver with the Serial I/O protocol </span></li>
   <li><span style="font-size:0.8em" >Helps locate a protocol’s specific GUID through  UEFI Boot Services’ function </span></li>
@@ -333,30 +333,20 @@ Same as slide
 <p align="right"><span class="gold" >Lab 4: Help from Robust Libraries</span></p>
 <span style="font-size:0.8em" >EDK II has libraries to help with porting UEFI Drivers </span><br>
 <ul style="list-style-type:none">
-  <li>@fa[book gp-bullet-gold]<span style="font-size:0.8em" >&nbsp;&nbsp;`AllocateZeroPool()` include - `[MemoryAllocationLib.h]`  </span></li>
-  <li>@fa[book gp-bullet-gold]<span style="font-size:0.8em" >&nbsp;&nbsp;`SetMem16()`   include - `[BaseMemoryLib.h]`  </span></li>
+  <li>@fa[book gp-bullet-gold]<span style="font-size:0.75em" >&nbsp;&nbsp;`AllocateZeroPool()` include - `[MemoryAllocationLib.h]`  </span></li><br>
+  <li>@fa[book gp-bullet-gold]<span style="font-size:0.75em" >&nbsp;&nbsp;`SetMem16()`   include - `[BaseMemoryLib.h]`  </span></li>
 </ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <span style="font-size:0.6em" >Check the MdePkg with libraries help file (.chm format) </span><br>
 
 
 Note: 
-
-
----?image=/assets/images/slides/Slide16.JPG
-@title[Lab 4: Debugging before Testing the Driver ]
-<p align="right"><span class="gold" >Lab 4: Debugging before Testing the Driver</span></p>
-<span style="font-size:0.8em" >UEFI drivers can use the EDK II debug library </span><br>
-
-<div class="left1">
-<ul style="list-style-type:none">
-  <li>@fa[book gp-bullet-gold]<span style="font-size:0.8em" >&nbsp;&nbsp;`DEBUG( )`	 include - `[DebugLib.h]`</span></li><br>
-  <li><span style="font-size:0.8em" >`DEBUG()` statements can show status interest points throuhout  the driver code</span></li>
-</ul>
-</div>
-<div class="right1">
-<span style="font-size:0.8em" >&nbsp;</span>
-</div>
 
 ---
 @title[Lab 4: Update Supported ]
@@ -389,7 +379,7 @@ This code checks for a specific protocol before returning a status for the suppo
 
 ---
 @title[Lab 4: Update Supported 02 ]
-<p align="right"><span class="gold" >Lab 3: Update Supported Add Code </span></p>
+<p align="right"><span class="gold" >Lab 4: Update Supported Add Code </span></p>
 <span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following code for the supported function:</span>
 ```C
   EFI_STATUS Status;
@@ -424,7 +414,7 @@ This code checks for a specific protocol before returning a status for the suppo
 <p align="right"><span class="gold" >Lab 4: Notice UEFI Driver Wizard Includes</span></p>
 <ul>
    <li><span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > `~/src/edk2/MyWizardDriver/MyWizardDriver.h`</span></li>
-   <li><span style="font-size:0.8em" ><b>Notice</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following include statement is already included by the driver wizard: </span></li>
+   <li><span style="font-size:0.8em" ><b>Notice</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following include statement is already added by the driver wizard: </span></li>
 <pre lang="c">
 ```
 // Produced Protocols
@@ -451,7 +441,185 @@ This code checks for a specific protocol before returning a status for the suppo
 Note: 
 
 
+---
+@title[Lab 4: Update the Start  ]
+<p align="right"><span class="gold" >Lab 4: Update the `Start()` </span></p>
+<ul>
+   <li><span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following in  `MyWizardDriver.c` after the `#include “MyWizardDriver.h”` line: </span></li>
+<pre lang="c">
+```
+#define  DUMMY_SIZE 100*16		// Dummy buffer
+CHAR16	*DummyBufferfromStart = NULL;
+```
+</pre>
+    <li><span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > ` MyWizardDriverDriverBindingStart()`,  the start function for this driver and comment out the "`//`" in the line: `return EFI_UNSUPPORTED;` </span></li>
+<pre lang="c">
+```
+EFI_STATUS
+EFIAPI
+MyWizardDriverDriverBindingStart (
+  IN EFI_DRIVER_BINDING_PROTOCOL  *This,
+  IN EFI_HANDLE                   ControllerHandle,
+  IN EFI_DEVICE_PATH_PROTOCOL     *RemainingDevicePath OPTIONAL
+  )
+{
+  // return EFI_UNSUPPORTED;
+}
+```
+</pre>
+   <li><span style="font-size:0.8em" > copy and past (next slide)</span></li>
+</ul>
 
+Note: 
+---
+@title[Lab 4: Update Start 02 ]
+<p align="right"><span class="gold" >Lab 4: Update Start Add Code </span></p>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following code for the start function:</span>
+```C
+	if (DummyBufferfromStart == NULL) {     // was buffer already allocated?
+		DummyBufferfromStart = (CHAR16*)AllocateZeroPool (DUMMY_SIZE * sizeof(CHAR16));
+	}
+
+	if (DummyBufferfromStart == NULL) {
+		return EFI_OUT_OF_RESOURCES;    // Exit if the buffer isn’t there
+	}
+
+	SetMem16 (DummyBufferfromStart, (DUMMY_SIZE * sizeof(CHAR16)), 0x0042);  // Fill buffer
+	DEBUG ((EFI_D_INFO, "[MyWizardDriver] Buffer 0x%08x\r\n", DummyBufferfromStart));
+	return EFI_SUCCESS;
+```
+
+Note:
+
+This code checks for an allocated memory buffer. If the buffer doesn’t exist, memory will be allocated and filled with an initial value (0x0042). 
+
+
+
+---?image=/assets/images/slides/Slide18.JPG
+@title[Lab 4: Debugging before Testing the Driver ]
+<p align="right"><span class="gold" >Lab 4: Debugging before Testing the Driver</span></p>
+<span style="font-size:0.8em" >UEFI drivers can use the EDK II debug library </span><br>
+
+<div class="left1">
+<ul style="list-style-type:none">
+  <li>@fa[book gp-bullet-gold]<span style="font-size:0.8em" >&nbsp;&nbsp;`DEBUG( )`	 include - `[DebugLib.h]`</span></li><br>
+  <li><span style="font-size:0.8em" >`DEBUG()` statements can show status progress interest points throuhout  the driver code</span></li>
+</ul>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;</span>
+</div>
+
+
+---
+@title[Lab 4: Add Debug statements supported ]
+<p align="right"><span class="gold" >Lab 4: Add Debug Statements `Supported()`</span></p>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following DEBUG macros for the supported function:</span>
+```C
+	Status = gBS->OpenProtocol(
+		ControllerHandle,
+		&gEfiSerialIoProtocolGuid,
+		(VOID **)&SerialIo,
+		This->DriverBindingHandle,
+		ControllerHandle,
+		EFI_OPEN_PROTOCOL_BY_DRIVER | EFI_OPEN_PROTOCOL_EXCLUSIVE
+		);
+
+	if (EFI_ERROR(Status)) {
+	   DEBUG((EFI_D_INFO, "[MyWizardDriver] Not Supported \r\n"));
+	   return Status; // Bail out if OpenProtocol returns an error
+	}
+	
+	// We're here because OpenProtocol was a success, so clean up
+	gBS->CloseProtocol(
+		ControllerHandle,
+		&gEfiSerialIoProtocolGuid,
+		This->DriverBindingHandle,
+		ControllerHandle
+		);
+	DEBUG((EFI_D_INFO, "[MyWizardDriver] Supported SUCCESS\r\n"));
+	return EFI_SUCCESS;
+  //return EFI_UNSUPPORTED;
+}
+```	
+@[11](Copy / Paste DEBUG macro here. The `Status` variable depends on the output of the `OpenProtocol` function.)
+@[22](Copy / Paste another DEBUG macro here. It is only display when the Supported function returns EFI_SUCCESS.)
+
+
+
+---
+@title[Lab 4: Add Debug statements start ]
+<p align="right"><span class="gold" >Lab 4: Add Debug Statements `Start()`</span></p>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following DEBUG macro for the Start function just before the `return EFI_SUCCESS;` statement</span>
+```C
+DEBUG ((EFI_D_INFO, "\r\n***\r\n[MyWizardDriver] Buffer 0x%08x\r\n", DummyBufferfromStart));
+```	
+<span style="font-size:0.7em" ><i>Note: </i>This debug macro displays the memory address of the allocated buffer on the debug console</span><br>
+<br>
+
+<span style="font-size:0.8em" ><b>Save</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > `~/src/edk2/MyWizardDriver/MyWizardDriver.c`</span>
+
+
+
+
+---
+@title[Lab 4 Build and Test Driver]
+<p align="right"><span class="gold" >Lab 4: Build and Test Driver</span></p>
+<br>
+<span style="font-size:0.8em" >Build MyWizardDriver – Cd to ~/src/edk2 dir </span>
+```shell
+  bash$ build
+```
+<span style="font-size:0.8em" >Copy  MyWizardDriver.efi  to hda-contents</span>
+```shell
+ bash$ cd ~/run-ovmf/hda-contents
+ bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MyWizardDriver.efi .
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```shell
+  bash$ cd ~/run-ovmf
+  bash$ . RunQemu.sh
+```
+
+
+---?image=/assets/images/slides/Slide20.JPG
+@title[Lab 4 Build and Test Driver 02]
+<p align="right"><span class="gold" >Lab 4: Build and Test Driver</span></p>
+<span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell 2.0 prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span><br>
+<br>
+<div class="left">
+<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
+<span style="font-size:0.7em" >Observe the change in the string that the driver returned </span><br>
+<br>
+</div>
+<div class="right">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+
+
+---?image=/assets/images/slides/Slide21.JPG
+@title[Lab 4 Build and Test Driver 03]
+<br>
+<p align="left"><span class="gold" >Lab 4: Build and Test Driver</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >Check the QEMU debug console output.</span><br>
+<span style="font-size:0.8em" >Notice Debug messages indicate the driver did not return EFI_SUCCESS from the “Supported” function most of the time.  </span><br>
+<span style="font-size:0.8em" >See that the Start function did get called and a Buffer was allocated.</span><br>
+<br>
+<span style="font-size:0.8em" >
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span>
+</div>
+
+   
 
 
 
