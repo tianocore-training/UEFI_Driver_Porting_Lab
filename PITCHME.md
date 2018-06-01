@@ -877,7 +877,9 @@ Same as slide
 @title[Lab 5 Verify NVRAM Driver]
 <p align="right"><span class="gold" >Lab 5: Verify NVRAM Created by Driver</span></p>
 <span style="font-size:0.7em" >At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `</font>`dmpstore -all -b`</span></span><br>
-<span style="font-size:0.7em" >Observe new the NVRAM variable "`MWD_NVData`" was created and filled with 0x00s</span></span><br>
+<span style="font-size:0.65em" >Observe new the NVRAM variable "`MWD_NVData`" was created and filled with 0x00s</span></span><br>
+<br>
+<br>
 <br>
 <br>
 <br>
