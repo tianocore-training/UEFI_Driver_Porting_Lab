@@ -270,7 +270,7 @@ Same as slide
 <p align="right"><span class="gold" >Lab 3: Build and Test Driver</span></p>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
@@ -594,7 +594,7 @@ Note:
 <br>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.7em" ></span></span><br>
