@@ -140,8 +140,8 @@ continue to next slide
 ```
 </pre>
 <span style="font-size:0.7em" >Load the UEFI Driver from the shell</span><br>
-<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010">`fs0:`</span></span><br>
-<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010">`load MyWizardDriver.efi`</span></span>
+<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010">`fs0:`</span></span><br>
+<span style="font-size:0.6em" >&nbsp;&nbsp;&nbsp; Type: &nbsp;<span style="background-color: #101010">`load MyWizardDriver.efi`</span></span>
 
 </div>
 <div class="right1">
@@ -171,7 +171,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide8.JPG
 @title[Lab 2 Test Driver -Dh]
 <p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
-<span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type: <span style="background-color: #101010">`dh -d a9`</span></span>
+<span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type:&nbsp; <span style="background-color: #101010">`dh -d a9`</span></span>
 
 <div class="left">
 <span style="font-size:0.6em" ><i>Note:</i>  The value `a9` is the driver handle for MyWizardDriver.  The handle value may change based on your system configuration.(see example screenshot - right)</span>
@@ -191,11 +191,11 @@ Same as slide
 ---?image=/assets/images/slides/Slide9.JPG
 @title[Lab 2 Test Driver -unload]
 <p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
-<span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type: <span style="background-color: #101010">`unload a9`</span></span>
+<span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type:&nbsp; <span style="background-color: #101010">`unload a9`</span></span>
 
 <div class="left1">
 <span style="font-size:0.7em" >See example screenshot - below</span><br>
-<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span> again</span><br><br>
+<span style="font-size:0.7em" >Type:&nbsp; <span style="background-color: #101010">`drivers`</span> again</span><br><br>
 <span style="font-size:0.7em" >Notice results of `unload` command</span><br><br>
 <span style="font-size:0.7em" ><font color="yellow">Exit QEMU</font></span><br>
 </div>
@@ -269,11 +269,11 @@ Same as slide
 @title[Lab 3 Build and Test Driver]
 <p align="right"><span class="gold" >Lab 3: Build and Test Driver</span></p>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type:&nbsp; <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
-<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
+<span style="font-size:0.7em" >Type:&nbsp; <span style="background-color: #101010">`drivers`</span></span><br>
 <span style="font-size:0.7em" >Observe the change in the string that the driver returned </span><br>
 <br>
 <span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span>
@@ -593,8 +593,8 @@ Note:
 <p align="right"><span class="gold" >Lab 4: Build and Test Driver</span></p>
 <br>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type:&nbsp; <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.7em" ></span></span><br>
@@ -832,8 +832,8 @@ CreateNVVariable()
 @title[Lab 5 Build Test Driver]
 <p align="right"><span class="gold" >Lab 5: Test Driver</span></p>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type:&nbsp; <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.7em" >Observe the Buffer address returned by the debug statement</span></span><br>
@@ -995,8 +995,8 @@ Note:
 @title[Lab 6 Build and Test Driver]
 <p align="right"><span class="gold" >Lab 6: Build and Test Driver</span></p>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`Shell> `&nbsp;</font>`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.65em" >Observe the buffer address is at  `0x06808018` as this slide example </span><br>
@@ -1015,11 +1015,11 @@ Same as slide
 ---?image=/assets/images/slides/Slide39.JPG
 @title[Lab 6 Verify Driver]
 <p align="right"><span class="gold" >Lab 6: Verify Driver</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`drivers`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`drivers`</span></span><br>
 <br>
 <div class="left1">
 <span style="font-size:0.7em" >Observe the handle is "`A9`" as this slide example </span><br>
-<span style="font-size:0.7em" >Type: <span style="background-color: #101010">` mem  0x06808018`</span></span><br>
+<span style="font-size:0.7em" >Type: &nbsp;<span style="background-color: #101010">` mem  0x06808018`</span></span><br>
 <span style="font-size:0.7em" >Observe the buffer was filled with the "0x0042" </span><br>
 </div>
 <div class="right1">
@@ -1036,7 +1036,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide40.JPG
 @title[Lab 6 Verify Unload]
 <p align="right"><span class="gold" >Lab 6: Verify Unload</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`unload a9`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`unload a9`</span></span><br>
 <br>
 <div class="left1">
 <span style="font-size:0.7em" >Observe the DEBUG messages from the Unload</span><br>
@@ -1055,7 +1055,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide41.JPG
 @title[Lab 6 Verify Unload]
 <p align="right"><span class="gold" >Lab 6: Verify Unload</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x06808018 -b`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x06808018 -b`</span></span><br>
 <br>
 <div class="left1">
 <span style="font-size:0.7em" >Observe the buffer is now NOT filled </span><br>
