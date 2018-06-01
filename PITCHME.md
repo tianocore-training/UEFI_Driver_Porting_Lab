@@ -853,7 +853,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide26.JPG
 @title[Lab 5 Verify Driver]
 <p align="right"><span class="gold" >Lab 5: Verify Driver</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x6808018`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type&nbsp;&nbsp; <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x6808018`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.7em" >Observe the Buffer is filled with the letter "B"</span></span><br>
@@ -876,9 +876,9 @@ Same as slide
 ---?image=/assets/images/slides/Slide42.JPG
 @title[Lab 5 Verify NVRAM Driver]
 <p align="right"><span class="gold" >Lab 5: Verify NVRAM Created by Driver</span></p>
-<span style="font-size:0.7em" >At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `</font>`dmpstore -all -b`</span></span><br>
-<span style="font-size:0.65em" >Observe new the NVRAM variable "`MWD_NVData`" was created and filled with 0x00s</span></span><br>
 <br>
+<span style="font-size:0.7em" >At the Shell prompt, type &nbsp;&nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `</font>`dmpstore -all -b`</span></span><br>
+<span style="font-size:0.65em" >Observe new the NVRAM variable "`MWD_NVData`" was created and filled with 0x00s</span></span><br>
 <br>
 <br>
 <br>
