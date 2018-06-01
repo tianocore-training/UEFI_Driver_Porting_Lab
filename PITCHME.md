@@ -978,9 +978,7 @@ Note:
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
-<span style="font-size:0.7em" >Observe the buffer addres is `0x06808018` as this slide example </span><br>
-<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
-<span style="font-size:0.7em" >Observe the handle for this driver </span><br>
+<span style="font-size:0.65em" >Observe the buffer addres is at address `0x06808018` as this slide example </span><br>
 </div>
 <div class="right">
 <span style="font-size:0.8em" ></span>
@@ -996,12 +994,12 @@ Same as slide
 ---?image=/assets/images/slides/Slide39.JPG
 @title[Lab 6 Verify Driver]
 <p align="right"><span class="gold" >Lab 6: Verify Driver</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`drivers`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`drivers`</span></span><br>
 <br>
 <div class="left1">
-<span style="font-size:0.7em" >Observe the handle is 'A9` as this slide example </span><br>
-<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`mem 0x06808018`</span></span><br>
-<span style="font-size:0.7em" >Observe the buffer was filled </span><br>
+<span style="font-size:0.7em" >Observe the handle is "`A9`" as this slide example </span><br>
+<span style="font-size:0.7em" >Type: <span style="background-color: #101010">` mem  0x06808018`</span></span><br>
+<span style="font-size:0.7em" >Observe the buffer was filled with the "0x0042" </span><br>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" ></span>
@@ -1017,7 +1015,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide40.JPG
 @title[Lab 6 Verify Unload]
 <p align="right"><span class="gold" >Lab 6: Verify Unload</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`unload a9`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`unload a9`</span></span><br>
 <br>
 <div class="left1">
 <span style="font-size:0.7em" >Observe the DEBUG messages from the Unload</span><br>
@@ -1036,10 +1034,12 @@ Same as slide
 ---?image=/assets/images/slides/Slide41.JPG
 @title[Lab 6 Verify Unload]
 <p align="right"><span class="gold" >Lab 6: Verify Unload</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`mem 0x06808018 -b`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x06808018 -b`</span></span><br>
 <br>
 <div class="left1">
 <span style="font-size:0.7em" >Observe the buffer is now NOT filled </span><br>
+<br>
+<br>
 <br>
 <br>
 <br>
