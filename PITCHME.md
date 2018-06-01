@@ -84,6 +84,7 @@ Note:
 ---
 @title[Lab2: Build the UEFI Driver?]
 <p align="right"><span class="gold" >Lab 2: Build the UEFI Driver</span></p>
+<br>
 <ul>
    <li><span style="font-size:0.8em" >Perform <a href="https://gitpitch.com/Laurie0131/Platform_Build_LAB/master#/">Lab Setup</a> from previous Labs  </span></li>
    <li><span style="font-size:0.8em" >Open `~src/edk2/OvmfPkg/OvmfPkgX64.dsc`</span></li>
@@ -104,6 +105,7 @@ Note:
 ---
 @title[Lab 2 Build and Test Driver]
 <p align="right"><span class="gold" >Lab 2: Build and Test Driver</span></p>
+<br>
 <span style="font-size:0.8em" >Build MyWizardDriver – Cd to ~/src/edk2 dir </span>
 ```shell
   bash$ . edksetup.sh
@@ -126,6 +128,7 @@ continue to next slide
 ---?image=/assets/images/slides/Slide6.JPG
 @title[Lab 2 Build and Test Driver 02]
 <p align="right"><span class="gold" >Lab 2: Build and Test Driver</span></p>
+<br>
 <span style="font-size:0.8em" >Copy  MyWizardDriver.efi  to hda-contents</span>
 ```
  bash$ cd ~/run-ovmf/hda-contents
@@ -157,6 +160,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide7.JPG
 @title[Lab 2 Test Driver Drivers]
 <p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
+<br>
 <span style="font-size:0.8em" >At the shell prompt Type: <span style="background-color: #101010">`drivers`</span></span><br>
 <span style="font-size:0.7em" >Verify the UEFI Shell loaded the new driver. 
 The `drivers` command will display the driver information and a driver handle number ("a9" in the example screenshot )</span>
@@ -171,6 +175,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide8.JPG
 @title[Lab 2 Test Driver -Dh]
 <p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
+<br>
 <span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type:&nbsp; <span style="background-color: #101010">`dh -d a9`</span></span>
 
 <div class="left">
@@ -191,6 +196,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide9.JPG
 @title[Lab 2 Test Driver -unload]
 <p align="right"><span class="gold" >Lab 2: Test Driver</span></p>
+<br>
 <span style="font-size:0.8em" >At the shell prompt using the handle from the `drivers` command, Type:&nbsp; <span style="background-color: #101010">`unload a9`</span></span>
 
 <div class="left1">
@@ -224,6 +230,7 @@ Same as slide
 ---
 @title[Lab 3: Component Name ]
 <p align="right"><span class="gold" >Lab 3: Component Name</span></p>
+<br>
 <ul>
    <li><span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > `~/src/edk2/MyWizardDriver/ComponentName.c`</span></li>
    <li><span style="font-size:0.8em" ><b>Change</b>&nbsp;&nbsp; the string returned by the driver from `MyWizardDriver` to: &nbsp;&nbsp;&nbsp; <span style="background-color: #101010"><font color="#a8ff60">`UEFI Sample Driver`</font></span></span></li>
@@ -305,7 +312,7 @@ Same as slide
 ---?image=/assets/images/slides/Slide13.JPG
 @title[Lab 4: Port Supported-Start]
 <p align="center"><span class="gold" >Lab 4: Porting Supported and Start</span></p>
-<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Review the Driver Binding Protocol</span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Review the Driver Binding Protocol</span>
 
 Note:
 
@@ -315,6 +322,7 @@ Note:
 ---
 @title[Lab 4: Supported Port]
 <p align="right"><span class="gold" >Lab 4: The `Supported()` Port</span></p>
+<br>
 <span style="font-size:0.8em" >The UEFI Driver Wizard produced a `Supported()` function but it only returns `EFI_UNSUPPORTED` </span><br>
 <span style="font-size:0.8em" ><Font color="yellow">Supported Goals: </font> </span></li>
 <ul style="list-style-type:disc">
@@ -351,6 +359,7 @@ Note:
 ---
 @title[Lab 4: Update Supported ]
 <p align="right"><span class="gold" >Lab 4: Update Supported </span></p>
+<br>
 <ul>
    <li><span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > `~/src/edk2/MyWizardDriver/MyWizardDriver.c`</span></li>
    <li><span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > ` MyWizardDriverDriverBindingSupported()`, 
@@ -476,7 +485,7 @@ Note:
 ---
 @title[Lab 4: Update Start 02 ]
 <p align="right"><span class="gold" >Lab 4: Update Start Add Code </span></p>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following code for the start function ` MyWizardDriverDriverBindingStart()`:</span>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the following code for the start function ` MyWizardDriverDriverBindingStart()`:</span>
 ```C
 	if (DummyBufferfromStart == NULL) {     // was buffer already allocated?
 		DummyBufferfromStart = (CHAR16*)AllocateZeroPool (DUMMY_SIZE * sizeof(CHAR16));
@@ -505,6 +514,7 @@ Note:
 ---?image=/assets/images/slides/Slide18.JPG
 @title[Lab 4: Debugging before Testing the Driver ]
 <p align="right"><span class="gold" >Lab 4: Debugging before Testing the Driver</span></p>
+<br>
 <span style="font-size:0.8em" >UEFI drivers can use the EDK II debug library </span><br>
 
 <div class="left1">
@@ -555,6 +565,7 @@ Note:
 ---
 @title[Lab 4: Add Debug statements start ]
 <p align="right"><span class="gold" >Lab 4: Add Debug Statements `Start()`</span></p>
+<br>
 <span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following <span style="background-color: #101010">`DEBUG`</span> macro for the Start function just before the <span style="background-color: #101010">`return EFI_SUCCESS;` </span>statement</span></span>
 ```C
   DEBUG ((EFI_D_INFO, "\r\n***\r\n[MyWizardDriver] Buffer 0x%08x\r\n", DummyBufferfromStart));
@@ -621,6 +632,7 @@ Same as slide
   <li><span style="font-size:0.7em" >See that the "`Start()`" function did get called and a Buffer was allocated.</span></li>
  
 </ul>
+<br>
    <span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
 </div>
 <div class="right2">
@@ -638,7 +650,7 @@ Same as slide
 <div class="left1">
 <ul>
   <li><span style="font-size:0.8em" >In this lab you’ll create a non-volatile UEFI variable (NVRAM), and set and get the variable to return a successful supported function </span></li>
-  <li><span style="font-size:0.8em" >Use Runtime services to "`SetVariable()`" and "`GetVariable()`"</li>
+  <li><span style="font-size:0.8em" >Use Runtime services to </span><span style="font-size:0.65em" >"`SetVariable()`" and "`GetVariable()`"</span></li>
 
 </ul>
 </div>
@@ -712,6 +724,7 @@ Note:
 ---
 @title[Lab 5: Add New Vars to .c ]
 <p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
+<br>
 <span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.c`"</span><br>
 <span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the following  4 lines after the `#include "MyWizardDriver.h"` statement: </span><br>
 ```C
@@ -728,6 +741,7 @@ MYWIZARDDRIVER_CONFIGURATION   *mMyWizDrv_Conf = &mMyWizDrv_Conf_buffer;  //use 
 ---
 @title[Lab 5: Update Suppport for new function ]
 <p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
+<br>
 <span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`MyWizardDriverDriverBindingSupported ()`" function</span><br>
 <span style="font-size:0.8em" ><b>Comment out</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the `DEBUG` macro statement and return statement as below: </span><br>
 <span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the 2 lines: 1) new "`CreateNVVariable();`" call and 2) "`return`"  as below: </span><br>
@@ -831,6 +845,7 @@ CreateNVVariable()
 ---?image=/assets/images/slides/Slide25.JPG
 @title[Lab 5 Build Test Driver]
 <p align="right"><span class="gold" >Lab 5: Test Driver</span></p>
+<br>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type:&nbsp; <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
@@ -853,19 +868,15 @@ Same as slide
 ---?image=/assets/images/slides/Slide26.JPG
 @title[Lab 5 Verify Driver]
 <p align="right"><span class="gold" >Lab 5: Verify Driver</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type&nbsp;&nbsp; <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x6808018`</span></span><br>
 <br>
-<div class="left">
-<span style="font-size:0.7em" >Observe the Buffer is filled with the letter "B"</span></span><br>
+<span style="font-size:0.75em" >At the Shell prompt, type&nbsp;&nbsp; <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x6808018`</span></span><br>
+<span style="font-size:0.75em" >Observe the Buffer is filled with the letter "B" or 0x0042 </span></span><br>
+<br>
 <br>
 <br>
 <br>
 
 
-</div>
-<div class="right">
-<span style="font-size:0.8em" ></span>
-</div>
 
 Note:
 
@@ -914,6 +925,7 @@ Note:
 ---
 @title[Lab 6: Port the Unload]
 <p align="right"><span class="gold" >Lab 6: Port the Unload function</span></p>
+<br>
 <span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.c`"</span><br>
 <span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > "`MyWizardDriverUnload ()`" function</span><br>
 <span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the following "`if`"  and "`DEBUG`" statements before the "`return EFI_SUCCESS;`" statement.</span><br>
@@ -994,6 +1006,7 @@ Note:
 ---?image=/assets/images/slides/Slide25.JPG
 @title[Lab 6 Build and Test Driver]
 <p align="right"><span class="gold" >Lab 6: Build and Test Driver</span></p>
+<br>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`Shell> `&nbsp;</font>`fs0:`</span></span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
@@ -1015,7 +1028,8 @@ Same as slide
 ---?image=/assets/images/slides/Slide39.JPG
 @title[Lab 6 Verify Driver]
 <p align="right"><span class="gold" >Lab 6: Verify Driver</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`drivers`</span></span><br>
+<br>
+<span style="font-size:0.7em" >At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`drivers`</span></span><br>
 <br>
 <div class="left1">
 <span style="font-size:0.7em" >Observe the handle is "`A9`" as this slide example </span><br>
@@ -1036,7 +1050,8 @@ Same as slide
 ---?image=/assets/images/slides/Slide40.JPG
 @title[Lab 6 Verify Unload]
 <p align="right"><span class="gold" >Lab 6: Verify Unload</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`unload a9`</span></span><br>
+<br>
+<span style="font-size:0.7em" >At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`unload a9`</span></span><br>
 <br>
 <div class="left1">
 <span style="font-size:0.7em" >Observe the DEBUG messages from the Unload</span><br>
@@ -1055,7 +1070,8 @@ Same as slide
 ---?image=/assets/images/slides/Slide41.JPG
 @title[Lab 6 Verify Unload]
 <p align="right"><span class="gold" >Lab 6: Verify Unload</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x06808018 -b`</span></span><br>
+<br>
+<span style="font-size:0.7em" > At the Shell prompt, type &nbsp;<span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x06808018 -b`</span></span><br>
 <br>
 <div class="left1">
 <span style="font-size:0.7em" >Observe the buffer is now NOT filled </span><br>
