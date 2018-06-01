@@ -789,10 +789,14 @@ CreateNVVariable()
 <span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.h`"</span><br>
 <span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following after the list of library include statements: </span><br>
 ```C
+// Libraries
+// . . .
 #include <Library/UefiRuntimeServicesTableLib.h>
 ```
 <span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following after the list of protocol include statements: </span><br>
 ```C
+// Produced Protocols
+// . . .
 #include "MyWizardDriverNVDataStruc.h"	
 ```
 <span style="font-size:0.8em" ><b>Save</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.h`"</span><br>
