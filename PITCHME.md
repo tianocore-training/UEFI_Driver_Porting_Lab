@@ -617,7 +617,7 @@ Same as slide
 <div class="left2">
 <ul>
   <li><span style="font-size:0.7em" >Check the QEMU debug console output.</span></li>
-  <li><span style="font-size:0.7em" >Notice Debug messages indicate the driver did not return `EFI_SUCCESS` from the “`Supported()`” function most of the time.  </span></li>
+  <li><span style="font-size:0.7em" >Notice Debug messages indicate the driver did not return `EFI_SUCCESS` from the “`Supported()`” function <b>most</b> of the time.  </span></li>
   <li><span style="font-size:0.7em" >See that the "`Start()`" function did get called and a Buffer was allocated.</span></li>
  
 </ul>
@@ -659,10 +659,12 @@ With QEMU there is a serial device so the driver’s start function would then s
 <p align="center"><span class="gold" >Lab 5: Adding a NVRAM Variable Steps </span></p>
 <br>
 <ol>
-  <li><span style="font-size:0.8em" >Create .h file with new <font color="cyan">`typedef`</font> and <font color="cyan">`GUID`</font> </span></li>
+  <li><span style="font-size:0.8em" >Create .h file with new <font color="#87b7e4">`typedef`</font> definition and its own <font color="#87b7e4">`GUID`</font> </span></li>
   <li><span style="font-size:0.8em" >Include the new .h file in the driver's top .h file </span></li>
   <li><span style="font-size:0.8em" >`EntryPoint()` Init new buffer for NVRam Variable   </span></li>
   <li><span style="font-size:0.8em" >`Supported()` make a call to a new function to set/get the new NVRam Variable  </span></li>
+  <li><span style="font-size:0.8em" >Before `EntryPoint()` add the new function `CreateNVVariable()` to the driver.c file.</span></li>
+
 </ol>
 
 
@@ -671,8 +673,8 @@ With QEMU there is a serial device so the driver’s start function would then s
 @title[Lab 5: Create a new .h file ]
 <p align="right"><span class="gold" >Lab 5: Create a new .h file</span></p>
 <span style="font-size:0.8em" ><b>Create</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > a new file in your editor called: "`MyWizardDriverNVDataStruc.h`"</span><br>
-<span style="font-size:0.8em" ><b>Copy, Paste & Save</b>&nbsp;&nbsp;</span>
-```C
+<span style="font-size:0.8em" ><b>Copy, Paste</b> and then <b>Save</b> this file</b>&nbsp;&nbsp;</span>
+```C++
 #ifndef _MYWIZARDDRIVERNVDATASTRUC_H_
 #define _MYWIZARDDRIVERNVDATASTRUC_H_
 #include <Guid/HiiPlatformSetupFormset.h>
@@ -711,13 +713,13 @@ Note:
 @title[Lab 5: Add New Vars to .c ]
 <p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
 <span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.c`"</span><br>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following after the `#include "MyWizardDriver.h"` statement: </span><br>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the following  4 lines after the `#include "MyWizardDriver.h"` statement: </span><br>
 ```C
 #include "MyWizardDriver.h"
 
 EFI_GUID   mMyWizardDriverVarGuid = MYWIZARDDRIVER_VAR_GUID;
 
-CHAR16     mVariableName[] = L"MWD_NVData";
+CHAR16     mVariableName[] = L"MWD_NVData";  // Use Shell "Dmpstore" to see 
 MYWIZARDDRIVER_CONFIGURATION   mMyWizDrv_Conf_buffer;
 MYWIZARDDRIVER_CONFIGURATION   *mMyWizDrv_Conf = &mMyWizDrv_Conf_buffer;  //use the pointer 
 ```
@@ -727,8 +729,8 @@ MYWIZARDDRIVER_CONFIGURATION   *mMyWizDrv_Conf = &mMyWizDrv_Conf_buffer;  //use 
 @title[Lab 5: Update Suppport for new function ]
 <p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.c</span></p>
 <span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`MyWizardDriverDriverBindingSupported ()`" function</span><br>
-<span style="font-size:0.8em" ><b>Comment out</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the `DEBUG` macro statement and return statement as below: </span><br>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the new "`CreateNVVariable();`" call as below: </span><br>
+<span style="font-size:0.8em" ><b>Comment out</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the `DEBUG` macro statement and return statement as below: </span><br>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the 2 lines: 1) new "`CreateNVVariable();`" call and 2) "`return`"  as below: </span><br>
 ```C
 	if (EFI_ERROR(Status)) {
 		//DEBUG((EFI_D_INFO, "[MyWizardDriver] Not Supported \r\n"));
@@ -787,14 +789,14 @@ CreateNVVariable()
 @title[Lab 5: Update .h]
 <p align="right"><span class="gold" >Lab 5: Update MyWizardDriver.h</span></p>
 <span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.h`"</span><br>
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following after the list of library include statements: </span><br>
-```C
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the following "#include" after the list of library include statements: </span><br>
+```C++
 // Libraries
 // . . .
 #include <Library/UefiRuntimeServicesTableLib.h>
 ```
-<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following after the list of protocol include statements: </span><br>
-```C
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the following  "#include" after the list of protocol include statements: </span><br>
+```C++
 // Produced Protocols
 // . . .
 #include "MyWizardDriverNVDataStruc.h"	
@@ -827,8 +829,8 @@ CreateNVVariable()
 
 
 ---?image=/assets/images/slides/Slide25.JPG
-@title[Lab 5 Build and Test Driver]
-<p align="right"><span class="gold" >Lab 5: Build and Test Driver</span></p>
+@title[Lab 5 Build Test Driver]
+<p align="right"><span class="gold" >Lab 5: Test Driver</span></p>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
@@ -849,13 +851,16 @@ Same as slide
 
 
 ---?image=/assets/images/slides/Slide26.JPG
-@title[Lab 5 Test Driver]
-<p align="right"><span class="gold" >Lab 5: Test Driver</span></p>
+@title[Lab 5 Verify Driver]
+<p align="right"><span class="gold" >Lab 5: Verify Driver</span></p>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`mem 0x6808018`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.7em" >Observe the Buffer is filled with the letter "B"</span></span><br>
-<span style="font-size:0.7em" ></span><br>
+<br>
+<br>
+<br>
+<span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
 
 </div>
 <div class="right">
@@ -867,6 +872,188 @@ Note:
 Same as slide
 
 
+
+
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 6: Port Stop and Unload]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 6: Port Stop and Unload </span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >In this lab, you’ll port the driver’s “Unload” and “Stop” functions to free any resources the driver allocated when it was loaded and started.</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+ 
+Note:
+
+
+---
+@title[Lab 6: Port the Unload]
+<p align="right"><span class="gold" >Lab 6: Port the Unload function</span></p>
+<span style="font-size:0.8em" ><b>Open</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > "`~/src/edk2/MyWizardDriver/MyWizardDriver.c`"</span><br>
+<span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > "`MyWizardDriverUnload ()`" function</span><br>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the following "`if`"  and "`DEBUG`" statements before the "`return EFI_SUCCESS;`" statement.</span><br>
+```C++
+  // Do any additional cleanup that is required for this driver
+  //
+  if (DummyBufferfromStart != NULL) {
+	  FreePool(DummyBufferfromStart);
+	  DEBUG((EFI_D_INFO, "[MyWizardDriver] Unload, clear buffer\r\n"));
+  }
+  DEBUG((EFI_D_INFO, "[MyWizardDriver] Unload success\r\n"));
+
+  return EFI_SUCCESS;
+```
+
+Note:
+
+- The code will deallocate the buffer using the FreePool library function.
+- Notice that the FreePool is called since there was an allocat call to get memory in the start function
+- for the Unload similar "unwind" calls such as
+  - free memory
+  - Uninstall Protocol Interfaces
+  - Disconnect Controller calls are made
+  
+
+---
+@title[Lab 6: Port the Stop]
+<p align="right"><span class="gold" >Lab 6: Port the Stop function</span></p>
+<span style="font-size:0.8em" ><b>Locate</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > "`MyWizardDriverDriverBindingStop()`" function</span><br>
+<span style="font-size:0.8em" ><b>Comment out</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > with "`//`" before the "`return EFI_UNSUPPORTED;`" statement.</span><br>
+<span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" > the following "`if`"  and "`DEBUG`" statements in place of the "`return EFI_UNSUPPORTED;`" statement.</span>
+```C++
+	if (DummyBufferfromStart != NULL) {
+		FreePool(DummyBufferfromStart);
+		DEBUG((EFI_D_INFO, "[MyWizardDriver] Stop, clear buffer\r\n"));
+	}
+
+	DEBUG((EFI_D_INFO, "[MyWizardDriver] Stop, EFI_SUCCESS\r\n"));
+	return EFI_SUCCESS;
+  //  return EFI_UNSUPPORTED;
+}
+```
+<span style="font-size:0.8em" ><b>Save & Close</b>&nbsp;&nbsp;</span><span style="font-size:0.65em" >"`MyWizardDriverDriver.c`"</span>
+
+Note:
+
+- The code will deallocate the buffer using the FreePool library function.
+- This a duplicate of the check performed in the unload function, in case the stop function was executed prior to unload.
+- Notice that the FreePool is called since there was an allocat call to get memory in the start function
+- for the stop similar "unwind" calls to mimic same functions in the start
+  - free memory for Alocate memory
+  - Uninstall Protocol Interfaces  for Install interfaces
+  
+    
+
+  
+---
+@title[Lab 6 Build and Test Driver]
+<p align="right"><span class="gold" >Lab 6: Build and Test Driver</span></p>
+<br>
+<span style="font-size:0.8em" >Build MyWizardDriver – Cd to ~/src/edk2 dir </span>
+```shell
+  bash$ build
+```
+<span style="font-size:0.8em" >Copy  MyWizardDriver.efi  to hda-contents</span>
+```shell
+ bash$ cd ~/run-ovmf/hda-contents
+ bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/MyWizardDriver.efi .
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```shell
+  bash$ cd ~/run-ovmf
+  bash$ . RunQemu.sh
+```
+
+
+
+---?image=/assets/images/slides/Slide25.JPG
+@title[Lab 6 Build and Test Driver]
+<p align="right"><span class="gold" >Lab 6: Build and Test Driver</span></p>
+<span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
+<br>
+<div class="left">
+<span style="font-size:0.7em" >Observe the buffer addres is `0x06808018` as this slide example </span><br>
+<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`drivers`</span></span><br>
+<span style="font-size:0.7em" >Observe the handle for this driver </span><br>
+</div>
+<div class="right">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+
+
+
+
+---?image=/assets/images/slides/Slide39.JPG
+@title[Lab 6 Verify Driver]
+<p align="right"><span class="gold" >Lab 6: Verify Driver</span></p>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`drivers`</span></span><br>
+<br>
+<div class="left1">
+<span style="font-size:0.7em" >Observe the handle is 'A9` as this slide example </span><br>
+<span style="font-size:0.7em" >Type: <span style="background-color: #101010">`mem 0x06808018`</span></span><br>
+<span style="font-size:0.7em" >Observe the buffer was filled </span><br>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+
+
+
+
+---?image=/assets/images/slides/Slide40.JPG
+@title[Lab 6 Verify Unload]
+<p align="right"><span class="gold" >Lab 6: Verify Unload</span></p>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`unload a9`</span></span><br>
+<br>
+<div class="left1">
+<span style="font-size:0.7em" >Observe the DEBUG messages from the Unload</span><br>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+        
+
+
+
+---?image=/assets/images/slides/Slide41.JPG
+@title[Lab 6 Verify Unload]
+<p align="right"><span class="gold" >Lab 6: Verify Unload</span></p>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`mem 0x06808018 -b`</span></span><br>
+<br>
+<div class="left1">
+<span style="font-size:0.7em" >Observe the buffer is now NOT filled </span><br>
+<br>
+<br>
+<br>
+<span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ></span>
+</div>
+
+Note:
+
+Same as slide
+     
+  
 
 
 ---  
