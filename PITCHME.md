@@ -978,7 +978,7 @@ Note:
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
-<span style="font-size:0.65em" >Observe the buffer addres is at address `0x06808018` as this slide example </span><br>
+<span style="font-size:0.65em" >Observe the buffer address is at  `0x06808018` as this slide example </span><br>
 </div>
 <div class="right">
 <span style="font-size:0.8em" ></span>
