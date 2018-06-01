@@ -833,7 +833,7 @@ CreateNVVariable()
 <p align="right"><span class="gold" >Lab 5: Test Driver</span></p>
 <span style="font-size:0.8em" ><b>Load</b> the UEFI Driver from the shell</span><br>
 <span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`fs0:`</span></span><br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`load MyWizardDriver.efi`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; Type: <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`load MyWizardDriver.efi`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.7em" >Observe the Buffer address returned by the debug statement</span></span><br>
@@ -853,19 +853,38 @@ Same as slide
 ---?image=/assets/images/slides/Slide26.JPG
 @title[Lab 5 Verify Driver]
 <p align="right"><span class="gold" >Lab 5: Verify Driver</span></p>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`Shell> `</font>`mem 0x6808018`</span></span><br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp; At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `&nbsp;</font>`mem 0x6808018`</span></span><br>
 <br>
 <div class="left">
 <span style="font-size:0.7em" >Observe the Buffer is filled with the letter "B"</span></span><br>
 <br>
 <br>
 <br>
-<span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
+
 
 </div>
 <div class="right">
 <span style="font-size:0.8em" ></span>
 </div>
+
+Note:
+
+Same as slide
+
+
+
+---?image=/assets/images/slides/Slide42.JPG
+@title[Lab 5 Verify NVRAM Driver]
+<p align="right"><span class="gold" >Lab 5: Verify NVRAM Created by Driver</span></p>
+<span style="font-size:0.7em" >At the Shell prompt, type <span style="background-color: #101010"><font color="yellow">`FS0:\> `</font>`dmpstore -all -b`</span></span><br>
+<span style="font-size:0.7em" >Observe new the NVRAM variable "`MWD_NVData`" was created and filled with 0x00s</span></span><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
+
 
 Note:
 
