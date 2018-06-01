@@ -454,7 +454,7 @@ Note:
 @title[Lab 4: Update the Start  ]
 <p align="right"><span class="gold" >Lab 4: Update the `Start()` </span></p>
 <ul>
-   <li><span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following in  `MyWizardDriver.c` after the <span style="background-color: #101010">`#include “MyWizardDriver.h”` </span>line: </span></li>
+   <li><span style="font-size:0.8em" ><b>Copy & Paste</b>&nbsp;&nbsp;</span><span style="font-size:0.7em" > the following in  `MyWizardDriver.c` after the <br><span style="background-color: #101010">`#include “MyWizardDriver.h”` </span>line: </span></li>
 <pre lang="c">
 ```
 #define  DUMMY_SIZE 100*16		// Dummy buffer
@@ -632,6 +632,7 @@ Same as slide
   <li><span style="font-size:0.7em" >See that the "`Start()`" function did get called and a Buffer was allocated.</span></li>
  
 </ul>
+<br>
 <br>
    <span style="font-size:0.8em" ><font color="yellow">Exit QEMU</font></span></li>
 </div>
