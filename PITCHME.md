@@ -753,8 +753,9 @@ MYWIZARDDRIVER_CONFIGURATION   *mMyWizDrv_Conf = &mMyWizDrv_Conf_buffer;  //use 
 		Status = CreateNVVariable();
 		if (EFI_ERROR(Status)) {
 			DEBUG((EFI_D_ERROR, "[MyWizardDriver] Not Supported \r\n"));
-			return Status; // Status now depends on CreateNVVariable Function
 		}
+		return Status; // Status now depends on CreateNVVariable Function
+		
 
 ```
 
