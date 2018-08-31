@@ -520,7 +520,7 @@ Note:
 <div class="left1">
 <ul style="list-style-type:none">
   <li>@fa[book gp-bullet-gold]<span style="font-size:0.8em" >&nbsp;&nbsp;`DEBUG( )`	 include - `[DebugLib.h]`</span></li><br>
-  <li><span style="font-size:0.8em" >`DEBUG()` Macro statements can show status progress interest points throuhout  the driver code</span></li>
+  <li><span style="font-size:0.8em" >`DEBUG()` Macro statements can show status progress interest points throughout  the driver code</span></li>
 </ul>
 </div>
 <div class="right1">
@@ -1092,7 +1092,26 @@ Note:
 
 Same as slide
      
-  
+       
+---?image=/assets/images/slides/Slide50_1.JPG
+@title[Additional Porting]
+<p align="right"><span class="gold" >Additional Porting</span></p>  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<span style="font-size:0.8em" >Refer to the UEFI Drivers Writer’s Guide for more tips – <a href="https://legacy.gitbook.com/book/edk2-docs/edk-ii-uefi-driver-writer-s-guide/details">Pdf link</a></span>
+
+Note:
+Use the UEFI Driver Wizard to create a starting point for new drivers on EDK II
+
+
 
 
 ---  
