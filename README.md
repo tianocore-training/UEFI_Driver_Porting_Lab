@@ -32,4 +32,4 @@
 # UEFI_Driver_Porting_lab
 How to Write a UEFI Driver using UEFI Driver Model
 
-To see the Slides goto https://gitpitch.com/Laurie0131/UEFI_Driver_Porting_lab/master#/
+To see the Slides goto https://gitpitch.com/tianocore-training/UEFI_Driver_Porting_lab/master#/

@@ -86,7 +86,7 @@ Note:
 <p align="right"><span class="gold" >Lab 2: Build the UEFI Driver</span></p>
 <br>
 <ul>
-   <li><span style="font-size:0.8em" >Perform <a href="https://gitpitch.com/Laurie0131/Platform_Build_LAB/master#/">Lab Setup</a> from previous Labs  </span></li>
+   <li><span style="font-size:0.8em" >Perform <a href="https://gitpitch.com/tianocore-training/Platform_Build_LAB/master#/">Lab Setup</a> from previous Labs  </span></li>
    <li><span style="font-size:0.8em" >Open `~src/edk2/OvmfPkg/OvmfPkgX64.dsc`</span></li>
    <li><span style="font-size:0.8em" >Add the following to the `[Components]` section: </span><br><span style="font-size:0.6em" >*Hint:*add to the last module in the `[Components]` section   </span></li>
 <pre lang="php">
